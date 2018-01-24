@@ -15,7 +15,7 @@ set $audio ffmpeg -f alsa -i default -c:a flac -y ~/Videos/output.flac
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Montserrat 10
+font pango:Hermit-medium 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -95,11 +95,11 @@ bindsym $mod+a                focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "1: "
-set $workspace2 "2: "
-set $workspace3 "3: "
-set $workspace4 "4: "
-set $workspace10 "10: "
+set $workspace1 "1: "
+set $workspace2 "2: "
+set $workspace3 "3: Code"
+set $workspace4 "4: Telegram"
+set $workspace10 "10: Spotify"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -208,7 +208,7 @@ bar {
 #bindind the $ will exec the command 
 bindsym $mod+x         exec ~/.config/i3/lock.sh #blocks the screen
 bindsym $mod+Shift+x   exec shutdown now 
-
+bindsym $mod+Shift+z   exec reboot
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume   exec amixer -q sset Master 3%+ #increase volume
@@ -235,8 +235,8 @@ exec spotify
 #exec rhythmbox
 exec vivaldi
 
-exec_always feh --bg-scale /home/pedro/Pictures/alena-aenami-serenity-1k.jpg
+exec_always feh --bg-scale /home/pedro/Pictures/alena-aenami-serenity-1k.jpg # loading the wallpaper
 
 exec_always xrandr --output HDMI1 --off --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output VIRTUAL1 --off --output DP1 --off --output VGA1 --off
 
-exec_always compton -f
+exec_always compton -f # what makes things be tranparency
