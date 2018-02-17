@@ -1,5 +1,5 @@
 #!/bin/bash
-ICON=/home/pedro/Pictures/Aperture-Science.png
+ICON=/home/pedro/Pictures/zerg-color.png
 LOCATION=/tmp/screen.png
 scrot $LOCATION   #Tira um screenshot da tela atual e salva em um arquivo
 convert $LOCATION -scale 10% -scale 1000% $LOCATION   #converte o tamanho da imagem e adiciona a pixelagem nela
