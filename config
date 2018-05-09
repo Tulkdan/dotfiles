@@ -32,7 +32,8 @@ font pango:Hack-Regular 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec rxvt-unicode
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -125,7 +126,7 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
-assign [class="Chromium-browser"] $workspace1
+assign [class="firefox"] $workspace1
 # For code
 assign [class="Code"] $workspace3
 assign [class="jetbrains-pycharm"] $workspace3
@@ -221,7 +222,7 @@ bindsym $mod+F3          exec --no-startup-id $audio
 #######################################################
 # Starting with the system
 exec spotify
-exec chromium-browser
+exec firefox
 
 exec_always feh --randomize --bg-scale /home/tulkdan/Pictures/Wallpapers/* # loading the wallpaper
 

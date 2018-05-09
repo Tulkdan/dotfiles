@@ -1,0 +1,86 @@
+! ------------------------------------------------------------------------------
+!  Colors
+! ------------------------------------------------------------------------------
+
+#define base00 #212121
+#define base01 #303030
+#define base02 #353535
+#define base03 #4A4A4A
+#define base04 #B2CCD6
+#define base05 #EEFFFF
+#define base06 #EEFFFF
+#define base07 #FFFFFF
+#define base08 #F07178
+#define base09 #F78C6C
+#define base0A #FFCB6B
+#define base0B #C3E88D
+#define base0C #89DDFF
+#define base0D #82AAFF
+#define base0E #C792EA
+#define base0F #FF5370
+
+! ------------------------------------------------------------------------------
+!  URxvt
+! ------------------------------------------------------------------------------
+
+*foreground:   base05
+*background:   base00
+*cursorColor:  base05
+
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
+
+*color8:       base03
+*color9:       base09
+*color10:      base01
+*color11:      base02
+*color12:      base04
+*color13:      base06
+*color14:      base0F
+*color15:      base07
+
+! ------------------------------------------------------------------------------
+!  URxvt
+! ------------------------------------------------------------------------------
+! Fonts
+Xft.dpi         : 106
+Xft*hinting     : true
+Xft*rgba        : rgb
+Xft*autohint    : false
+Xft*hintstyle   : hintslight
+Xft*lcdfilter   : lcddefault
+
+URxvt.cursorBlink  :1
+URxvt.font        :xft:scientifica:size=9
+URxvt.boldFont    :xft:scientifica:italic:size=9
+URxvt.italicFont  :xft:scientifica:italic:size=9
+
+URxvt.lineSpace           : 1
+URxvt.letterSpace         : 1
+URxvt.scrollBar           : false
+URxvt.internalBorder      : 18
+URxvt.geometry            : 70x35
+URxvt.thickness           : 5
+URxvt.titleBar            : false
+URxvt.intensityStyles     : false
+URxvt*perl-ext-common   : default,matcher
+URxvt*cursorUnderline   : true
+
+
+! Clickable URLs
+URxvt.url-launcher   : firefox
+URxvt.matcher.button : 1
+
+! Use Control-Shift-V/C for X clipboard
+URxvt.iso14755: false
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+
+
