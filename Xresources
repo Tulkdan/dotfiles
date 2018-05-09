@@ -69,9 +69,12 @@ URxvt.geometry            : 70x35
 URxvt.thickness           : 5
 URxvt.titleBar            : false
 URxvt.intensityStyles     : false
-URxvt*perl-ext-common   : default,matcher
-URxvt*cursorUnderline   : true
+URxvt.perl-ext-common   : default,matcher
+URxvt.cursorUnderline   : true
 
+! Transparent
+URxvt.transparent    : true
+URxvt.shading        : 15
 
 ! Clickable URLs
 URxvt.url-launcher   : firefox
@@ -81,6 +84,4 @@ URxvt.matcher.button : 1
 URxvt.iso14755: false
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
-
-
 
