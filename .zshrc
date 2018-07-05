@@ -7,7 +7,11 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="oxide"
+ZSH_THEME="spaceship"
+
+#POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs) 
+#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator virtualenv)
 
 # export TERM="screen-256color"
 
@@ -93,28 +97,32 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# alias pycharm="exec ./opt/pycharm/bin/pycharm.sh"
-# alias eclipse="exec ./opt/eclipse/eclipse"
+alias eclipse="cd ~/ && ./eclipse/eclipse"
+alias reset="reset rxvt"
+alias work="cd ~/ && code && service mysql start && sudo ./eclipse/eclipse"
+alias postman="cd ~/ && ./Postman/Postman"
+alias pen="udisksctl mount -b /dev/sdb1"
+alias unpen="udisksctl unmount -b /dev/sdb1"
+alias slack="cd ~/ && ./startslack.py"
 
-
-function powerline_precmd() {
-    PS1="$(powerline-shell --shell zsh $?)"
-}
-
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-
-if [ "$TERM" != "linux" ]; then
-    install_powerline_precmd
-fi
+#function powerline_precmd() {
+#    PS1="$(powerline-shell --shell zsh $?)"
+#}
+#
+#function install_powerline_precmd() {
+#  for s in "${precmd_functions[@]}"; do
+#    if [ "$s" = "powerline_precmd" ]; then
+#      return
+#    fi
+#  done
+#  precmd_functions+=(powerline_precmd)
+#}
+#
+#if [ "$TERM" != "linux" ]; then
+#    install_powerline_precmd
+#fi
 
 # added by Anaconda3 installer
 export PATH="/home/tulkdan/anaconda3/bin:$PATH"
@@ -124,3 +132,6 @@ export PATH="/home/tulkdan/anaconda3/bin:$PATH"
 
 ## Added for Nodejs
 export NODE_ENV='development'
+
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i

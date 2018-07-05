@@ -1,1 +1,0 @@
-/home/tulkdan/scientifica/ligature_plugins/cpp.vim

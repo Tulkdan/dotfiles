@@ -56,15 +56,15 @@ Xft*autohint    : false
 Xft*hintstyle   : hintslight
 Xft*lcdfilter   : lcddefault
 
-URxvt.cursorBlink  :1
-URxvt.font        :xft:scientifica:size=9
-URxvt.boldFont    :xft:scientifica:italic:size=9
-URxvt.italicFont  :xft:scientifica:italic:size=9
+URxvt.cursorBlink :1
+URxvt.font        :xft:Fira\ Code:size=9
+URxvt.boldFont    :xft:Fira\ Code:bold:size=9
+URxvt.italicFont  :xft:Fira\ Code:italic:size=9
 
-URxvt.lineSpace           : 1
-URxvt.letterSpace         : 1
+URxvt.lineSpace           : -1
+URxvt.letterSpace         : -1
 URxvt.scrollBar           : false
-URxvt.internalBorder      : 18
+URxvt.internalBorder      : 20
 URxvt.geometry            : 70x35
 URxvt.thickness           : 5
 URxvt.titleBar            : false
@@ -74,10 +74,10 @@ URxvt.cursorUnderline   : true
 
 ! Transparent
 URxvt.transparent    : true
-URxvt.shading        : 15
+URxvt.shading        : 10
 
 ! Clickable URLs
-URxvt.url-launcher   : firefox
+URxvt.url-launcher   : chromium-browser
 URxvt.matcher.button : 1
 
 ! Use Control-Shift-V/C for X clipboard
