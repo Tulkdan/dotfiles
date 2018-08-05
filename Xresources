@@ -57,9 +57,9 @@ Xft*hintstyle   : hintslight
 Xft*lcdfilter   : lcddefault
 
 URxvt.cursorBlink :1
-URxvt.font        :xft:Fira\ Code:size=9
-URxvt.boldFont    :xft:Fira\ Code:bold:size=9
-URxvt.italicFont  :xft:Fira\ Code:italic:size=9
+URxvt.font        :xft:Fira\ Code:size=7
+URxvt.boldFont    :xft:Fira\ Code:bold:size=7
+URxvt.italicFont  :xft:Fira\ Code:italic:size=7
 
 URxvt.lineSpace           : -1
 URxvt.letterSpace         : -1
@@ -77,7 +77,7 @@ URxvt.transparent    : true
 URxvt.shading        : 10
 
 ! Clickable URLs
-URxvt.url-launcher   : chromium-browser
+URxvt.url-launcher   : firefox
 URxvt.matcher.button : 1
 
 ! Use Control-Shift-V/C for X clipboard
