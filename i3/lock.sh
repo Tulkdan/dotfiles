@@ -1,5 +1,5 @@
 #!/bin/bash
-ICON=/home/tulkdan/Pictures/sc2.png
+ICON=$HOME/Pictures/sc2.png
 LOCATION=/tmp/screen.png
 
 
@@ -13,7 +13,7 @@ convert $LOCATION -paint 3 $LOCATION
 convert $LOCATION $ICON -gravity center -composite -matte $LOCATION
 
 
-i3lock -i $LOCATION -u
+i3lock -i $LOCATION
 
 
 rm $LOCATION

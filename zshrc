@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/tulkdan/.oh-my-zsh
+  export ZSH=/home/pedro/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -68,8 +68,11 @@ plugins=(
   git
 )
 
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 source $ZSH/oh-my-zsh.sh
+source /etc/environment
 
 # User configuration
 
@@ -98,14 +101,18 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 #
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
+alias vimconfig="vim ~/.vimrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias eclipse="cd ~/ && ./eclipse/eclipse"
 alias reset="reset rxvt"
-alias work="cd ~/ && code && service mysql start && sudo ./eclipse/eclipse"
+alias rambox="./Downloads/Rambox-0.5.17-ia32/rambox &"
+alias work="service mysql start && code && sudo ./eclipse/eclipse"
 alias postman="cd ~/ && ./Postman/Postman"
 alias pen="udisksctl mount -b /dev/sdb1"
 alias unpen="udisksctl unmount -b /dev/sdb1"
 alias slack="cd ~/ && ./startslack.py"
+alias amazon="ssh -v -i ~/work/lothus.pem ec2-user@52.90.238.191"
+alias deploy="cd ~/ && ./deploy.sh"
 
 #function powerline_precmd() {
 #    PS1="$(powerline-shell --shell zsh $?)"
@@ -125,7 +132,7 @@ alias slack="cd ~/ && ./startslack.py"
 #fi
 
 # added by Anaconda3 installer
-export PATH="/home/tulkdan/anaconda3/bin:$PATH"
+# export PATH="/home/tulkdan/anaconda3/bin:$PATH"
 
 # Base16 Shell.
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
@@ -135,3 +142,7 @@ export NODE_ENV='development'
 
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
+export PATH=~/.local/bin:$PATH
+
+export NVM_DIR="/home/pedro/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
