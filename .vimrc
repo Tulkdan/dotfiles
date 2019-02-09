@@ -11,10 +11,10 @@ set wildchar=<Tab> wildmenu wildmode=full
 
 set list listchars=tab:\|.,trail:.,extends:»,precedes:«,nbsp:×
 
-set tabstop=4
+set tabstop=2
 
 " when using the >> or << commands, shift lines by 4 spaces
-set shiftwidth=4
+set shiftwidth=2
 
 " enable syntax highlighting
 syntax enable
@@ -25,10 +25,11 @@ set cursorline
 " show the matching part of the pair for [] {} and ()
 set showmatch
 
-
+autocmd FileType markdown,md,rmd map <F5> :! (echo 'require("rmarkdown"); render("'%'");'<bar>  R --vanilla) <CR>
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -79,7 +80,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jreybert/vimagit'
 Plugin 'townk/vim-autoclose'
 Plugin 'mattn/emmet-vim'
-Plugin 'flazz/vim-colorschemes'
+Plugin 'qqwaszxxx/vim-battlestation'
 
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1
@@ -117,3 +118,4 @@ autocmd FileType html,css EmmetInstall
 
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
+
