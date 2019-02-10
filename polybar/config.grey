@@ -62,13 +62,13 @@ blue-gray = #546e7a
 ;==========================================================
 
 [bar/main]
-width = 96%
+width = 98%
 height = 30
-offset-x = 2%
+offset-x = 1%
 offset-y = 2%
 bottom = false
 fixed-center = false
-line-size = 2
+line-size = 0
 
 background = ${color.bg}
 foreground = ${color.fg}
@@ -89,7 +89,7 @@ scroll-down = i3wm-wsprev
 ;== Module Location ========================================================
 
 modules-left = arch workspaces google github reddit twitter youtube
-modules-right = volume battery network date
+modules-right = volume battery network date 
  
 ;== Modules ========================================================
 
@@ -257,13 +257,13 @@ label-background = ${color.shade3}
 time =  %I:%M %p
 time-alt =  %Y-%m-%d
 
-;[module/powermenu]
-;type = custom/text
-;content = 襤
-;content-padding = 2
-;content-background = ${color.shade2}
-;content-foreground = ${color.fg}
-;click-left = pmenu_1
-;click-right = pmenu_1
+[module/powermenu]
+type = custom/text
+content = 襤
+content-padding = 2
+content-background = ${color.shade2}
+content-foreground = ${color.fg}
+click-left = ~/.config/polybar/scripts/pmenu_1
+click-right = ~/.config/polybar/scripts/pmenu_1
 
 ;== EOF ========================================================
