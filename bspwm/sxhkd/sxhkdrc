@@ -4,7 +4,7 @@ super + Return
 
 # Program launcher
 super + @space
-	dmenu_run
+	dmenu_run -b
 
 # File Manager
 super + r
@@ -28,15 +28,15 @@ super + q
 
 # lock screen
 super + x
-	~/./.config/lock.sh
+	~/./.config/bspwm/scripts/lock.sh
 
 # shutdown
 super + shift + x
-	shutdown now
+	~/./.config/bspwm/scripts/shutdown.sh
 
 # restart
 super + shift + z
-	reboot
+	~/./.config/bspwm/scripts/reboot.sh
 
 # alternate between the tiled and monocle layout
 super + m
@@ -154,3 +154,10 @@ super + p
 super + shift + p
 	udisksctl unmount -b /dev/sdb1
 
+# ncmpcpp
+super + n
+	st -e ncmpcpp
+
+# Random wallpaper
+super + w
+	~/./.config/bspwm/random_wallpapers.sh

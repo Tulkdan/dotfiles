@@ -57,9 +57,9 @@ Xft*hintstyle   : hintslight
 Xft*lcdfilter   : lcddefault
 
 URxvt.cursorBlink :1
-URxvt.font        :xft:Fira\ Code:size=7
-URxvt.boldFont    :xft:Fira\ Code:bold:size=7
-URxvt.italicFont  :xft:Fira\ Code:italic:size=7
+URxvt.font        :xft:scientifica:size=5
+URxvt.boldFont    :xft:scientifica:bold:size=5
+URxvt.italicFont  :xft:scientifica:italic:size=5
 
 URxvt.lineSpace           : -1
 URxvt.letterSpace         : -1

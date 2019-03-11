@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME=""
 
 #POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 #POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs) 
@@ -103,16 +103,12 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias eclipse="cd ~/ && ./eclipse/eclipse"
-alias reset="reset rxvt"
-alias rambox="./Downloads/Rambox-0.5.17-ia32/rambox &"
-alias work="service mysql start && code && sudo ./eclipse/eclipse"
 alias postman="cd ~/ && ./Postman/Postman"
 alias pen="udisksctl mount -b /dev/sdb1"
 alias unpen="udisksctl unmount -b /dev/sdb1"
-alias slack="cd ~/ && ./startslack.py"
-alias amazon="ssh -v -i ~/work/lothus.pem ec2-user@52.90.238.191"
-alias deploy="cd ~/ && ./deploy.sh"
+alias atualizar="sudo apt-get update && sudo apt-get upgrade"
+alias monitor="exec ~/.config/bspwm/scripts/monitor_screens.sh"
+
 
 #function powerline_precmd() {
 #    PS1="$(powerline-shell --shell zsh $?)"
@@ -146,3 +142,7 @@ export PATH=~/.local/bin:$PATH
 
 export NVM_DIR="/home/pedro/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+autoload -U promptinit; promptinit
+
+prompt pure
