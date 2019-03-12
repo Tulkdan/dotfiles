@@ -160,4 +160,4 @@ super + n
 
 # Random wallpaper
 super + w
-	~/./.config/bspwm/random_wallpapers.sh
+	~/./.config/bspwm/scripts/wallpaper.sh
