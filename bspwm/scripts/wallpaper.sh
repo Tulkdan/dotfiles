@@ -9,6 +9,9 @@ do
 	WALLPAPERS="$entry\n"
 done
 
-CHOSEN=$(echo "$WALLPAPERS" | dmenu -i -b)
+CHOSEN=$(echo "$WALLPAPERS" | rofi -dmenu -i -p Wallpapers -width 50)
 
-wal -i "$HOME/Pictures/Wallpapers/$CHOSEN"
+echo "${CHOSEN}"
+
+feh --bg-fill "$HOME/Pictures/Wallpapers/$CHOSEN"
+

@@ -13,7 +13,6 @@ convert $LOCATION -paint 3 $LOCATION
 convert $LOCATION $ICON -gravity center -composite -matte $LOCATION
 
 
-i3lock -i $LOCATION
-
+i3lock -n -i $LOCATION -t
 
 rm $LOCATION
