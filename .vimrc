@@ -5,12 +5,13 @@ set laststatus=2
 set showtabline=2
 set t_Co=256                         " Enable 256 colors
 
-colorscheme photon
+colorscheme Blaaark
 
 set wildchar=<Tab> wildmenu wildmode=full
 
-set list listchars=tab:\|.,trail:.,extends:»,precedes:«,nbsp:×
+set wildignore+=**/node_modules/**
 
+set list listchars=tab:\|.,trail:.,extends:»,precedes:«,nbsp:×
 set tabstop=2
 
 " when using the >> or << commands, shift lines by 4 spaces
@@ -19,7 +20,6 @@ set shiftwidth=2
 " enable syntax highlighting
 syntax enable
 set autoindent
-
 set cursorline
 
 " show the matching part of the pair for [] {} and ()
@@ -27,9 +27,15 @@ set showmatch
 
 autocmd FileType markdown,md,rmd map <F5> :! (echo 'require("rmarkdown"); render("'%'");'<bar>  R --vanilla) <CR>
 autocmd FileType c map <F5> :! (gcc % && ./a.out) <CR>
+autocmd FileType cpp map <F5> :! (g++ % && ./a.out) <CR>
+autocmd FileType tex map <F6> :!pdflatex % && biber %:r && pdflatex % <CR>
+autocmd FileType tex map <F5> :!pdflatex % && pdflatex % <CR>
+
+nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>
 
 set nocompatible              " be iMproved, required
-filetype off                  " required
+filetype plugin on
+" filetype off                  " required
 
 
 " set the runtime path to include Vundle and initialize
@@ -108,12 +114,13 @@ call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
+" airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'jsformatter'
 let g:airline_theme='alduin'
 let g:airline_powerline_fonts = 1
 
-
+" emmet
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
