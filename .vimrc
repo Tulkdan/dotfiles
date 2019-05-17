@@ -5,7 +5,7 @@ set laststatus=2
 set showtabline=2
 set t_Co=256                         " Enable 256 colors
 
-colorscheme Blaaark
+colorscheme monotonic
 
 set wildchar=<Tab> wildmenu wildmode=full
 
