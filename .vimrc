@@ -5,7 +5,7 @@ set laststatus=2
 set showtabline=2
 set t_Co=256                         " Enable 256 colors
 
-colorscheme monotonic
+colorscheme spartan
 
 set wildchar=<Tab> wildmenu wildmode=full
 
@@ -35,6 +35,7 @@ autocmd FileType tex map <F5> :!pdflatex % && pdflatex % <CR>
 
 nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>
 nnoremap ,py :-1read $HOME/.vim/.skeleton.py<CR>
+nnoremap ,tex :-1read $HOME/.vim/.skeleton.tex<CR>
 
 set nocompatible              " be iMproved, required
 filetype plugin on
