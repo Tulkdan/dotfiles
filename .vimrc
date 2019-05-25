@@ -5,6 +5,8 @@ set laststatus=2
 set showtabline=2
 set t_Co=256                         " Enable 256 colors
 
+set background=dark
+
 colorscheme spartan
 
 set wildchar=<Tab> wildmenu wildmode=full
@@ -84,8 +86,6 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jreybert/vimagit'
 Plugin 'townk/vim-autoclose'
@@ -94,7 +94,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'w0rp/ale'
 Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'soywod/kronos.vim'
+Plugin 'itchyny/lightline.vim'
 
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1
@@ -122,12 +122,6 @@ call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('vue', 'yellow', 'none', 'yellow', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
-" airline
-let g:airline#extensions#tabline#enabled   = 1
-let g:airline#extensions#tabline#formatter = 'jsformatter'
-let g:airline_theme                        = 'base16_atelierdune'
-let g:airline_powerline_fonts              = 1
-
 " emmet
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
@@ -143,4 +137,17 @@ if &term =~ '256color'
 	" render properly when inside 256-color tmux and GNU screen
 	set t_ut=
 endif
+
+if !has('gui_running')
+  set t_Co=256
+endif
+
+let g:lightline = {
+  \ 'colorscheme': 'seoul256',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+  \ }
+  \ }
+
+set noshowmode
 
