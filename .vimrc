@@ -1,14 +1,23 @@
+" display line numbers on the left side
 set number
 set relativenumber
 
+" always display the status line
 set laststatus=2
 set showtabline=2
-set t_Co=256                         " Enable 256 colors
 
-colorscheme monotonic
+" new splits will be at the bottom or to the right side of the screen
+set splitbelow
+set splitright
+
+" enable 256 colors
+set t_Co=256
+
+colorscheme nighted
 
 set wildchar=<Tab> wildmenu wildmode=full
 
+" when using :find, should ignore files in node_modules
 set wildignore+=**/node_modules/**
 
 set list listchars=tab:\|.,trail:.,extends:»,precedes:«,nbsp:×
@@ -21,11 +30,16 @@ set shiftwidth=2
 " enable syntax highlighting
 syntax enable
 set autoindent
+
+" highlights current line
 set cursorline
 
 " show the matching part of the pair for [] {} and ()
 set showmatch
 
+
+
+" commands to compile in specific typefile
 autocmd FileType markdown,md,rmd map <F5> :! (echo 'require("rmarkdown"); render("'%'");'<bar>  R --vanilla) <CR>
 autocmd FileType c map <F5> :!gcc % && ./a.out <CR>
 autocmd FileType python map <F5> :!python % <CR>
@@ -33,6 +47,7 @@ autocmd FileType cpp map <F5> :!g++ % && ./a.out <CR>
 autocmd FileType tex map <F6> :!pdflatex % && biber %:r && pdflatex % <CR>
 autocmd FileType tex map <F5> :!pdflatex % && pdflatex % <CR>
 
+" custom skeleton
 nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>
 nnoremap ,py :-1read $HOME/.vim/.skeleton.py<CR>
 
@@ -82,18 +97,14 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jreybert/vimagit'
 Plugin 'townk/vim-autoclose'
-Plugin 'mattn/emmet-vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'w0rp/ale'
 Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'soywod/kronos.vim'
+Plugin 'itchyny/lightline.vim'
 
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1
@@ -137,9 +148,19 @@ let python_highlight_all = 1
 " enable javascript libraries highlights
 let g:user_javascript_libs = 'vue, react'
 
+let g:lightline = {
+  \ 'colorscheme': 'seoul256',
+  \}
+
 if &term =~ '256color'
 	" disable background color erase so that color schemes
 	" render properly when inside 256-color tmux and GNU screen
 	set t_ut=
 endif
 
+if !has('gui_running')
+  set t_Co=256
+endif
+
+" remove insert info
+set noshowmode
