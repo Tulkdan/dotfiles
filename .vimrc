@@ -14,6 +14,9 @@ set splitright
 set t_Co=256
 
 colorscheme nighted
+"
+" set background
+set background=dark
 
 set wildchar=<Tab> wildmenu wildmode=full
 
@@ -50,6 +53,7 @@ autocmd FileType tex map <F5> :!pdflatex % && pdflatex % <CR>
 " custom skeleton
 nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>
 nnoremap ,py :-1read $HOME/.vim/.skeleton.py<CR>
+nnoremap ,tex :-1read $HOME/.vim/.skeleton.tex<CR>
 
 set nocompatible              " be iMproved, required
 filetype plugin on
@@ -131,12 +135,6 @@ call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('vue', 'yellow', 'none', 'yellow', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-
-" airline
-let g:airline#extensions#tabline#enabled   = 1
-let g:airline#extensions#tabline#formatter = 'jsformatter'
-let g:airline_theme                        = 'base16_atelierdune'
-let g:airline_powerline_fonts              = 1
 
 " emmet
 let g:user_emmet_install_global = 0
