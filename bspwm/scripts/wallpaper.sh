@@ -6,10 +6,10 @@ WALLPAPERS=""
 
 for entry in "$WPP"
 do
-	WALLPAPERS="$entry\n"
+	WALLPAPERS="$entry"
 done
 
-CHOSEN=$(echo "$WALLPAPERS" | rofi -dmenu -i -p Wallpapers -width 50)
+CHOSEN=$(echo "$WALLPAPERS" | dmenu -i -nb '#101010' -sf '#404040' -sb '#dddddd' -nf '#dddddd')
 
 echo "${CHOSEN}"
 

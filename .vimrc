@@ -40,8 +40,6 @@ set cursorline
 " show the matching part of the pair for [] {} and ()
 set showmatch
 
-
-
 " commands to compile in specific typefile
 autocmd FileType markdown,md,rmd map <F5> :! (echo 'require("rmarkdown"); render("'%'");'<bar>  R --vanilla) <CR>
 autocmd FileType c map <F5> :!gcc % && ./a.out <CR>

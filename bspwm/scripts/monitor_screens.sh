@@ -2,7 +2,7 @@
 
 choices="laptop\nlaptopdual\nHDMI"
 
-chosen=$(echo "$choices" | dmenu -i -b)
+chosen=$(echo "$choices" | dmenu -i -b -nb '#101010' -sf '#404040' -sb '#dddddd' -nf '#dddddd')
 
 case "$chosen" in
 				laptop) xrandr --output LVDS-1 --primary --mode 1366x768 --auto --output VGA-1 --off;;
