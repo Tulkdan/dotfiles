@@ -3,13 +3,17 @@
 sxhkd &
 
 if (xrandr --query | grep 'VGA-1 connected'); then
-	xrandr --output LVDS-1 --primary --mode 1366x768 --output VGA-1 --auto --right-of LVDS-1
+  xrandr --output LVDS-1 --primary --mode 1366x768 --output VGA-1 --auto --right-of LVDS-1
 
-	bspc monitor LVDS-1 -d I II III IV
-	bspc monitor VGA-1 -d V VI VII VIII IX X
+  bspc monitor LVDS-1 -d I II III IV
+  bspc monitor VGA-1 -d V VI VII VIII IX X
+elif (xrandr --query | grep 'HDMI-1 connected'); then
+  xrandr --output LVDS-1 --off --output HDMI-1 --mode 2560x1080
+
+  bspc monitor HDMI-1 -d I II III IV V VI VII VIII IX X
 
 else
-	bspc monitor -d I II III IV V VI VII VIII IX X
+  bspc monitor -d I II III IV V VI VII VIII IX X
 fi
 
 bspc config border_width         2
@@ -51,5 +55,5 @@ bspc config presel_feedback_color "$color1"
 
 
 # Manualy initiate mpd to the user logged
-exec mpd
+bash mpd
 

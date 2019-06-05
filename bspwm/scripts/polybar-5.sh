@@ -14,3 +14,6 @@ polybar -c $HOME/.config/polybar/polybar-5/config.ini top &
 if ( xrandr --query | grep 'VGA-1 connected' ); then
 	polybar -c $HOME/.config/polybar/polybar-5/config.ini top_external &
 fi
+if ( xrandr --query | grep 'HDMI-1 connected' ); then
+	polybar -c $HOME/.config/polybar/polybar-5/config.ini top_HDMI &
+fi
