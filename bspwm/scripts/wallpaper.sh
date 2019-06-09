@@ -9,9 +9,7 @@ do
 	WALLPAPERS="$entry"
 done
 
-CHOSEN=$(echo "$WALLPAPERS" | dmenu -i -nb '#101010' -sf '#404040' -sb '#dddddd' -nf '#dddddd')
-
-echo "${CHOSEN}"
+CHOSEN=$(sh $HOME/.config/bspwm/scripts/dmenu_config.sh "$WALLPAPERS")
 
 feh --bg-fill "$HOME/Pictures/Wallpapers/$CHOSEN"
 

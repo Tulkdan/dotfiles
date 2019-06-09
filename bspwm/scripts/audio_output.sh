@@ -7,11 +7,12 @@ do
   OUTPUTS+="$line\n"
 done < <(pacmd list-cards | grep output: | awk '{ print $1, $2, $3, $4 }')
 
-CHOSEN=$(printf "$OUTPUTS" | dmenu -i -nb '#101010' -sf '#303030' -sb '#dddddd' -nf '#dddddd')
-
-CHOSEN=$(echo "${CHOSEN}" | awk '{ print $1 }')
+CHOSEN=$(sh $HOME/.config/bspwm/scripts/dmenu_config.sh "$OUTPUTS")
 
 if [ -z "$CHOSEN" ]
 then
+  CHOSEN=$(echo "${CHOSEN}" | awk '{ print $1 }')
+
   pacmd set-card-profile 0 "${CHOSEN::-1}"
 fi
+
