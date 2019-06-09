@@ -4,11 +4,12 @@ super + Return
 
 # Program launcher
 super + @space
-	dmenu_run -b
+	rofi -show drun -lines 5
+	# dmenu_run -b
 
 # File Manager
 super + r
-	st -e nnn
+	st -e ranger
 
 # Make sxhkd reload its configuration
 super + alt + r
@@ -158,6 +159,10 @@ super + shift + p
 super + n
 	st -e ncmpcpp
 
-# Random wallpaper
+# set wallpaper
 super + w
 	~/./.config/bspwm/scripts/wallpaper.sh
+
+# change audio output
+super + a
+	~/./.config/bspwm/scripts/audio_output.sh
