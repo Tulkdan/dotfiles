@@ -13,8 +13,8 @@ set splitright
 " enable 256 colors
 set t_Co=256
 
-colorscheme nighted
-"
+colorscheme challenger_deep
+
 " set background
 set background=dark
 
@@ -40,6 +40,12 @@ set cursorline
 " show the matching part of the pair for [] {} and ()
 set showmatch
 
+" set autoclose of single quote
+ino ' ''<left>
+
+" Maps autocomplete to tab
+imap <Tab> <C-N>
+
 " commands to compile in specific typefile
 autocmd FileType markdown,md,rmd map <F5> :! (echo 'require("rmarkdown"); render("'%'");'<bar>  R --vanilla) <CR>
 autocmd FileType c map <F5> :!gcc % && ./a.out <CR>
@@ -47,6 +53,9 @@ autocmd FileType python map <F5> :!python % <CR>
 autocmd FileType cpp map <F5> :!g++ % && ./a.out <CR>
 autocmd FileType tex map <F6> :!pdflatex % && biber %:r && pdflatex % <CR>
 autocmd FileType tex map <F5> :!pdflatex % && pdflatex % <CR>
+
+" set filetype to vue when vue file is opened
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue
 
 " custom skeleton
 nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>
@@ -107,6 +116,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'w0rp/ale'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'itchyny/lightline.vim'
+Plugin 'posva/vim-vue'
 
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1
