@@ -54,9 +54,6 @@ autocmd FileType cpp map <F5> :!g++ % && ./a.out <CR>
 autocmd FileType tex map <F6> :!pdflatex % && biber %:r && pdflatex % <CR>
 autocmd FileType tex map <F5> :!pdflatex % && pdflatex % <CR>
 
-" set filetype to vue when vue file is opened
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue
-
 " custom skeleton
 nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>
 nnoremap ,py :-1read $HOME/.vim/.skeleton.py<CR>
@@ -116,7 +113,6 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'w0rp/ale'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'itchyny/lightline.vim'
-Plugin 'posva/vim-vue'
 
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1
@@ -141,7 +137,6 @@ call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('vue', 'yellow', 'none', 'yellow', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
 " emmet
@@ -152,7 +147,7 @@ autocmd FileType html,css EmmetInstall
 let python_highlight_all = 1
 
 " enable javascript libraries highlights
-let g:user_javascript_libs = 'vue, react'
+let g:user_javascript_libs = 'react'
 
 let g:lightline = {
   \ 'colorscheme': 'seoul256',
