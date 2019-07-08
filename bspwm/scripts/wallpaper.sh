@@ -11,5 +11,8 @@ done
 
 CHOSEN=$(sh $HOME/.config/bspwm/scripts/dmenu_config.sh "$WALLPAPERS")
 
-feh --bg-fill "$HOME/Pictures/Wallpapers/$CHOSEN"
-
+if [ $CHOSEN ]
+then
+  feh --bg-fill "$HOME/Pictures/Wallpapers/$CHOSEN"
+  wal -s -t -n -e -i "${HOME}/Pictures/Wallpapers/${CHOSEN}"
+fi
