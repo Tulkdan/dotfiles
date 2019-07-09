@@ -37,22 +37,17 @@ xsetroot -cursor_name left_ptr
 
 xrdb $HOME/.Xresources
 
-# Set a random wallpaper
-feh --randomize --bg-fill ~/Pictures/Wallpapers/*
-# wal -i ~/Pictures/Wallpapers/wallpaper.jpg
-# bash $HOME/.config/bspwm/scripts/random_wallpapers.sh
+# Get a random wallpaper
+RANDOM_WALLPAPER=`ls $HOME/Pictures/Wallpapers/* | shuf -n 1`
+
+# Set background img with random wallpaper
+feh --bg-fill "${RANDOM_WALLPAPER}"
+# Get colors from that wallpaper with wal
+wal -s -t -n -e -i "${RANDOM_WALLPAPER}"
 
 bash $HOME/.config/bspwm/scripts/polybar-5.sh
 
 compton -f
-
-. "${HOME}/.cache/wal/colors.sh"
-
-bspc config normal_border_color "$color1"
-bspc config active_border_color "$color2"
-bspc config focused_border_color "$color15"
-bspc config presel_feedback_color "$color1"
-
 
 # Manualy initiate mpd to the user logged
 bash mpd
