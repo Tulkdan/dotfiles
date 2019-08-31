@@ -13,7 +13,10 @@ set splitright
 " enable 256 colors
 set t_Co=256
 
-colorscheme challenger_deep
+" add mouse suport
+set mouse=a
+
+colorscheme Blaaark
 
 " set background
 set background=dark
@@ -22,12 +25,13 @@ set wildchar=<Tab> wildmenu wildmode=full
 
 " when using :find, should ignore files in node_modules
 set wildignore+=**/node_modules/**
+set path+=**
 
 set list listchars=tab:\|.,trail:.,extends:»,precedes:«,nbsp:×
 set tabstop=2
 set expandtab
 
-" when using the >> or << commands, shift lines by 4 spaces
+" when using the >> or << commands, shift lines by 2 spaces
 set shiftwidth=2
 
 " enable syntax highlighting
@@ -43,8 +47,8 @@ set showmatch
 " set autoclose of single quote
 ino ' ''<left>
 
-" Maps autocomplete to tab
-imap <Tab> <C-N>
+
+
 
 " commands to compile in specific typefile
 autocmd FileType markdown,md,rmd map <F5> :! (echo 'require("rmarkdown"); render("'%'");'<bar>  R --vanilla) <CR>
@@ -54,43 +58,38 @@ autocmd FileType cpp map <F5> :!g++ % && ./a.out <CR>
 autocmd FileType tex map <F6> :!pdflatex % && biber %:r && pdflatex % <CR>
 autocmd FileType tex map <F5> :!pdflatex % && pdflatex % <CR>
 
-" custom skeleton
+
+
+
+" custom skeletons
 nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>
 nnoremap ,py :-1read $HOME/.vim/.skeleton.py<CR>
 nnoremap ,tex :-1read $HOME/.vim/.skeleton.tex<CR>
+
 
 set nocompatible              " be iMproved, required
 filetype plugin on
 " filetype off                  " required
 
 
+" Vundle configuration and plugins
+"
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-
-" All of your Plugins must be added before the following line
+Plugin 'scrooloose/nerdtree'
+Plugin 'jreybert/vimagit'
+Plugin 'townk/vim-autoclose'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'w0rp/ale'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'itchyny/lightline.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -105,14 +104,8 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'jreybert/vimagit'
-Plugin 'townk/vim-autoclose'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'w0rp/ale'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'itchyny/lightline.vim'
+
+
 
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1
@@ -138,10 +131,6 @@ call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-
-" emmet
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
 
 " enable all Python syntax highlighting features
 let python_highlight_all = 1

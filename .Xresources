@@ -1,61 +1,68 @@
-! vim: set filetype=xdefaults :
 ! ------------------------------------------------------------------------------
 !  Colors
 ! ------------------------------------------------------------------------------
+!
+!------------------------------------------------------------------------------
 
-#define base00 #101010
-#define base01 #E84F4F
-#define base02 #B8D68C
-#define base03 #E1AA5D
-#define base04 #7DC1CF
-#define base05 #9B64FB
-#define base06 #6D878D
-#define base07 #dddddd
-#define base08 #404040
-#define base09 #D23D3D
-#define base0A #A0CF5D
-#define base0B #F39D21
-#define base0C #4E9FB1
-#define base0D #8542FF
-#define base0E #42717B
-#define base0F base07
+#define base00 #212121
+#define base01 #303030
+#define base02 #353535
+#define base03 #4A4A4A
+#define base04 #B2CCD6
+#define base05 #EEFFFF
+#define base06 #EEFFFF
+#define base07 #FFFFFF
+#define base08 #F07178
+#define base09 #F78C6C
+#define base0A #FDF200
+#define base0B #13CA91
+#define base0C #00FECA
+#define base0D #7898FB
+#define base0E #FF2079
+#define base0F #FF5370
 
-*foreground: #D7D0C7
-*background: #151515
+!  URxvt
+! ------------------------------------------------------------------------------
 
-!black
-*color0:     base00
-*color8:     base08
-!red
-*color1:     base01
-*color9:     base09
-!green
-*color2:     base02
-*color10:    base0A
-!yellow
-*color3:     base03
-*color11:    base0B
-!blue
-*color4:     base04
-*color12:    base0C
-!magenta
-*color5:     base05
-*color13:    base0E
-!cyan
-*color6:     base06
-*color14:    base0F
-!white
-*color7:     base07
-*color15:    base07
+*alpha: 1
+*foreground:   base05
+*background:   base00
+*cursorColor:  base05
 
-URxvt*borderColor:        #151515
-URxvt*colorBD:            #ffffff
-URxvt*cursorColor:        #ff8939
-URxvt*cursorColor2:       #151515
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
 
-Xft.dpi         : 106
-Xft*hinting     : true
-Xft*rgba        : rgb
-Xft*autohint    : false
-Xft*hintstyle   : hintslight
-Xft*lcdfilter   : lcddefault
+*color8:       base03
+*color9:       base09
+*color10:      base01
+*color11:      base02
+*color12:      base04
+*color13:      base06
+*color14:      base0F
+*color15:      base07
+
+URxvt.cursorBlink : 0
+URxvt.font       :xft:BlexMono Nerd Font Mono:size=10:style=Medium
+URxvt.italicFont :xft:BlexMono Nerd Font Mono:size=10:style=Italic
+URxvt.boldFont   :xft:BlexMono Nerd Font Mono:size=10:style=Bold
+
+URxvt.lineSpace           : 0
+URxvt.letterSpace         : -1
+URxvt.scrollBar           : false
+URxvt.internalBorder      : 44
+URxvt.cursorUnderline     : false
+URxvt.geometry            : 70x35
+URxvt.thickness           : 5
+URxvt.titleBar            : false
+URxvt.intensityStyles     : false
+
+
+URxvt.perl-ext-common : default,matcher
+URxvt.url-launcher    : firefox
+URxvt.matcher.button  : 1
