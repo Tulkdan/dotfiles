@@ -16,7 +16,7 @@ set t_Co=256
 " add mouse suport
 set mouse=a
 
-colorscheme Blaaark
+colorscheme meh
 
 " set background
 set background=dark

@@ -107,8 +107,8 @@ alias postman="cd ~/ && ./Postman/Postman"
 alias pen="udisksctl mount -b /dev/sdb1"
 alias unpen="udisksctl unmount -b /dev/sdb1"
 alias atualizar="sudo apt-get update && sudo apt-get upgrade"
-alias monitor="exec ~/.config/bspwm/scripts/monitor_screens.sh"
-
+alias monitor="~/./.config/bspwm/scripts/monitor_screens.sh"
+alias ultralist="$HOME/ultralist"
 
 #function powerline_precmd() {
 #    PS1="$(powerline-shell --shell zsh $?)"
@@ -136,6 +136,8 @@ alias monitor="exec ~/.config/bspwm/scripts/monitor_screens.sh"
 ## Added for Nodejs
 export NODE_ENV='development'
 
+export GOPATH=$HOME/go
+
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 export PATH=~/.local/bin:$PATH
@@ -143,6 +145,11 @@ export PATH=~/.local/bin:$PATH
 export NVM_DIR="/home/pedro/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-autoload -U promptinit; promptinit
-
-prompt pure
+autoload -Uz add-zsh-hook
+_pista_prompt() {
+  source $HOME/.cargo/env
+  PROMPT="$(pista -z)"
+}
+add-zsh-hook precmd _pista_prompt
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+export SHORTEN_CWD=0
