@@ -1,56 +1,30 @@
-" display line numbers on the left side
-set number
-set relativenumber
-
-" always display the status line
-set laststatus=2
+set autoread                                      " reload files when changed on disk
+set number                                        " display line numbers on the left side
+set relativenumber                                " set numbers to be relativer to actual position
+set laststatus=2                                  " always display the status line
 set showtabline=2
-
-" new splits will be at the bottom or to the right side of the screen
-set splitbelow
+set splitbelow                                    " new splits will be at the bottom or to the right side of the screen
 set splitright
+set t_Co=256                                      " enable 256 colors
+set background=dark                               " set background
+set wildchar=<Tab> wildmenu wildmode=full         " set TAB the be the autocomplete
+set wildignore+=**/node_modules/**                " when using :find, should ignore files in node_modules
+set path+=**                                      " set current path to be searchable
+set list                                          " show trailing space
+set listchars=tab:\|.,trail:.,extends:»,precedes:«,nbsp:×
+set tabstop=2                                     " tab use 2 spaces
+set expandtab                                     " use space instead of spaces
+set shiftwidth=2                                  " when using the >> or << commands, shift lines by 2 spaces
 
-" enable 256 colors
-set t_Co=256
+colorscheme Blaaark                               " set colorscheme
 
-" add mouse suport
-set mouse=a
-
-colorscheme Blaaark
-
-" set background
-set background=dark
-
-set wildchar=<Tab> wildmenu wildmode=full
-
-" when using :find, should ignore files in node_modules
-set wildignore+=**/node_modules/**
-set path+=**
-
-set list listchars=tab:\|.,trail:.,extends:»,precedes:«,nbsp:×
-set tabstop=2
-set expandtab
-
-" when using the >> or << commands, shift lines by 2 spaces
-set shiftwidth=2
-
-" enable syntax highlighting
-syntax enable
+set mouse=a                                       " add mouse suport
+syntax enable                                     " enable syntax highlighting
 set autoindent
-
-" highlights current line
-set cursorline
-
-" show the matching part of the pair for [] {} and ()
-set showmatch
-
-" set autoclose of single quote
-ino ' ''<left>
-
-set swapfile
-set dir=~/tmp
-
-
+set cursorline                                    " highlights current line
+set showmatch                                     " show the matching part of the pair for [] {} and ()
+ino ' ''<left>                                    " set autoclose of single quote
+set directory-=.                                  " don't store swapfiles in the current directory
 
 
 " commands to compile in specific typefile
@@ -94,10 +68,9 @@ Plugin 'w0rp/ale'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'itchyny/lightline.vim'
 call vundle#end()            " required
+
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
+
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -106,7 +79,6 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
 
 
 
@@ -155,5 +127,4 @@ if !has('gui_running')
   set t_Co=256
 endif
 
-" remove insert info
-set noshowmode
+set noshowmode                                    " remove insert info
