@@ -9,7 +9,7 @@ done < <(pacmd list-cards | grep output: | awk '{ print $1, $2, $3, $4 }')
 
 CHOSEN=$(sh $HOME/.config/bspwm/scripts/dmenu_config.sh "$OUTPUTS")
 
-if [ -z "$CHOSEN" ]
+if [ -n "$CHOSEN" ]
 then
   CHOSEN=$(echo "${CHOSEN}" | awk '{ print $1 }')
 

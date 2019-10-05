@@ -16,7 +16,7 @@ set t_Co=256
 " add mouse suport
 set mouse=a
 
-colorscheme meh
+colorscheme Blaaark
 
 " set background
 set background=dark
@@ -46,6 +46,9 @@ set showmatch
 
 " set autoclose of single quote
 ino ' ''<left>
+
+set swapfile
+set dir=~/tmp
 
 
 

@@ -145,11 +145,9 @@ export PATH=~/.local/bin:$PATH
 export NVM_DIR="/home/pedro/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-autoload -Uz add-zsh-hook
-_pista_prompt() {
-  source $HOME/.cargo/env
-  PROMPT="$(pista -z)"
-}
-add-zsh-hook precmd _pista_prompt
+autoload -U promptinit; promptinit
+prompt pure
+
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export SHORTEN_CWD=0
+export PATH="$HOME/.rbenv/bin:$PATH"
