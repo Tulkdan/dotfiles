@@ -4,7 +4,7 @@
 !
 !------------------------------------------------------------------------------
 
-#define base00 #212121
+#define base00 #101010
 #define base01 #303030
 #define base02 #353535
 #define base03 #4A4A4A
@@ -24,7 +24,7 @@
 !  URxvt
 ! ------------------------------------------------------------------------------
 
-*alpha: 1
+! *alpha: 0
 *foreground:   base05
 *background:   base00
 *cursorColor:  base05
@@ -47,10 +47,12 @@
 *color14:      base0F
 *color15:      base07
 
+st.font:          Hack:style=Light:pixelsize=12:antialias=true
+
 URxvt.cursorBlink : 0
-URxvt.font       :xft:BlexMono Nerd Font Mono:size=10:style=Medium
-URxvt.italicFont :xft:BlexMono Nerd Font Mono:size=10:style=Italic
-URxvt.boldFont   :xft:BlexMono Nerd Font Mono:size=10:style=Bold
+URxvt.font       :xft:Hack:size=10:style=Medium
+URxvt.italicFont :xft:Hack:size=10:style=Italic
+URxvt.boldFont   :xft:Hack:size=10:style=Bold
 
 URxvt.lineSpace           : 0
 URxvt.letterSpace         : -1
