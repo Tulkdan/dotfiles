@@ -73,6 +73,8 @@ export EDITOR="$VISUAL"
 
 source $ZSH/oh-my-zsh.sh
 source /etc/environment
+source ~/.zprofile
+source ~/.profile
 
 # User configuration
 
@@ -148,6 +150,6 @@ export NVM_DIR="/home/pedro/.nvm"
 autoload -U promptinit; promptinit
 prompt pure
 
-export VIRTUAL_ENV_DISABLE_PROMPT=1
+# export VIRTUAL_ENV_DISABLE_PROMPT=1
 export SHORTEN_CWD=0
 export PATH="$HOME/.rbenv/bin:$PATH"
