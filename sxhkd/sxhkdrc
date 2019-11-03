@@ -4,8 +4,8 @@ super + Return
 
 # Program launcher
 super + @space
-	rofi -show drun -lines 5
-	# dmenu_run -b
+	dmenu_run -b
+#	rofi -show drun -lines 5
 
 # File Manager
 super + r
@@ -14,18 +14,6 @@ super + r
 # Make sxhkd reload its configuration
 super + alt + r
 	pkill -USR1 -x sxhkd
-
-#
-# bspwm hotkeys
-#
-
-# Quit/restart bspwm
-super + shift + r
-	bspc {quit,wm -r}
-
-# close and kill
-super + q
-	bspc node -{c,k}
 
 # lock screen
 super + x
@@ -38,6 +26,52 @@ super + shift + x
 # restart
 super + shift + z
 	~/./.config/bspwm/scripts/reboot.sh
+
+Print
+	scrot -q 100 -c -e 'mv $f ~/Pictures/screenshots/'
+
+#
+# Media keys
+#
+
+# Volume keys
+XF86AudioRaiseVolume
+	amixer -q sset Master 3%+
+
+XF86AudioLowerVolume
+	amixer -q sset Master 3%-
+
+# Mount pendrive
+# super + p
+# 	udisksctl mount -b /dev/sdb1
+# 
+# # Unmount pendrive
+# super + shift + p
+# 	udisksctl unmount -b /dev/sdb1
+
+# ncmpcpp
+super + n
+	st -e ncmpcpp
+
+# set wallpaper
+super + w
+	~/./.config/bspwm/scripts/wallpaper.sh
+
+# change audio output
+super + a
+	~/./.config/bspwm/scripts/audio_output.sh
+
+#
+# bspwm hotkeys
+#
+
+# Quit/restart bspwm
+super + shift + r
+	bspc {quit,wm -r}
+
+# close and kill
+super + q
+	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
 super + m
@@ -133,36 +167,3 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-Print
-	scrot -q 100 -c -e 'mv $f ~/Pictures/screenshots/'
-
-#
-# Media keys
-#
-
-# Volume keys
-XF86AudioRaiseVolume
-	amixer -q sset Master 3%+
-
-XF86AudioLowerVolume
-	amixer -q sset Master 3%-
-
-# Mount pendrive
-super + p
-	udisksctl mount -b /dev/sdb1
-
-# Unmount pendrive
-super + shift + p
-	udisksctl unmount -b /dev/sdb1
-
-# ncmpcpp
-super + n
-	st -e ncmpcpp
-
-# set wallpaper
-super + w
-	~/./.config/bspwm/scripts/wallpaper.sh
-
-# change audio output
-super + a
-	~/./.config/bspwm/scripts/audio_output.sh
