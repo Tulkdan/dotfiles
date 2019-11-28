@@ -16,15 +16,30 @@ set tabstop=2                                     " tab use 2 spaces
 set expandtab                                     " use space instead of spaces
 set shiftwidth=2                                  " when using the >> or << commands, shift lines by 2 spaces
 
-colorscheme Blaaark                               " set colorscheme
+colorscheme Blaaark                                  " set colorscheme
 
 set mouse=a                                       " add mouse suport
 syntax enable                                     " enable syntax highlighting
 set autoindent
 set cursorline                                    " highlights current line
 set showmatch                                     " show the matching part of the pair for [] {} and ()
-ino ' ''<left>                                    " set autoclose of single quote
 set directory-=.                                  " don't store swapfiles in the current directory
+
+ino ' ''<left>                                    " set autoclose of single quote
+
+" Resize contorl
+nmap <left> :vertical resize -5<CR>
+nmap <up> :resize -5<CR>
+nmap <down> :resize +5<CR>
+nmap <right> :vertical resize +5<CR>
+
+"Tabs
+map <C-t>k :tabr<CR>
+map <C-t>t :tabnew<CR>
+map <C-t>h :tabp<CR>
+map <C-t>l :tabn<CR>
+map <C-t>1 :tabn1<CR>
+map <C-t>2 :tabn2<CR>
 
 
 " commands to compile in specific typefile
@@ -67,6 +82,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'w0rp/ale'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'itchyny/lightline.vim'
+Plugin 'ollykel/v-vim'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -105,6 +121,7 @@ call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('jsx', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
 " enable all Python syntax highlighting features
