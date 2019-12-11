@@ -16,7 +16,7 @@ set tabstop=2                                     " tab use 2 spaces
 set expandtab                                     " use space instead of spaces
 set shiftwidth=2                                  " when using the >> or << commands, shift lines by 2 spaces
 
-colorscheme Blaaark                               " set colorscheme
+colorscheme Blaaark
 
 set mouse=a                                       " add mouse suport
 syntax enable                                     " enable syntax highlighting
@@ -65,8 +65,10 @@ Plugin 'townk/vim-autoclose'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'w0rp/ale'
-Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'itchyny/lightline.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'ollykel/v-vim'
+Plugin 'othree/yajs.vim'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -105,14 +107,13 @@ call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('typescript', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
-" enable javascript libraries highlights
-let g:user_javascript_libs = 'react'
-
+" lightline config
 let g:lightline = {
   \ 'colorscheme': 'seoul256',
   \}
@@ -126,5 +127,25 @@ endif
 if !has('gui_running')
   set t_Co=256
 endif
+
+" bspwm color border
+if $DISPLAY != ""
+  autocmd FocusGained * :silent execute "!$HOME/.vim/bspwm_border_color/set " . shellescape(mode())
+  autocmd InsertEnter * :silent execute "!$HOME/.vim/bspwm_border_color/set i"
+  autocmd InsertLeave * :silent execute "!$HOME/.vim/bspwm_border_color/set n"
+  autocmd VimLeave * :silent !$HOME/.vim/bspwm_border_color/reset
+  set title titlestring=VIM "So the listener script can tell its a VIM window
+endif
+
+" FORMATTERS
+au FileType javascript setlocal formatprg=prettier
+au FileType javascript.jsx setlocal formatprg=prettier
+au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+au FileType scss setlocal formatprg=prettier\ --parser\ css
+au FileType css setlocal formatprg=prettier\ --parser\ css
+
+let g:ale_linters = {
+\   'javascript': ['eslint']
+\}
 
 set noshowmode                                    " remove insert info

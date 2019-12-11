@@ -46,9 +46,8 @@ feh --bg-fill "${RANDOM_WALLPAPER}"
 wal -s -t -n -e -i "${RANDOM_WALLPAPER}"
 
 bash $HOME/.config/bspwm/scripts/polybar-5.sh
+$HOME/.vim/bspwm_border_color/listener
 
 compton -f
 
-# Manualy initiate mpd to the user logged
-bash mpd
 
