@@ -1,7 +1,5 @@
 #! /bin/sh
 
-sxhkd &
-
 if (xrandr --query | grep 'VGA-1 connected'); then
   xrandr --output LVDS-1 --primary --mode 1366x768 --output VGA-1 --auto --right-of LVDS-1
 
@@ -35,8 +33,6 @@ bspc rule -a discord desktop='^4'
 
 xsetroot -cursor_name left_ptr
 
-xrdb $HOME/.Xresources
-
 # Get a random wallpaper
 RANDOM_WALLPAPER=`ls $HOME/Pictures/Wallpapers/* | shuf -n 1`
 
@@ -45,9 +41,5 @@ feh --bg-fill "${RANDOM_WALLPAPER}"
 # Get colors from that wallpaper with wal
 wal -s -t -n -e -i "${RANDOM_WALLPAPER}"
 
-bash $HOME/.config/bspwm/scripts/polybar-5.sh
-$HOME/.vim/bspwm_border_color/listener
-
-compton -f
-
+bash $HOME/.config/bar/panel
 
