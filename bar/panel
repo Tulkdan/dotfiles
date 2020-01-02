@@ -1,0 +1,54 @@
+#! /bin/sh
+
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+xtitle -sf 'T%s\n' > "$PANEL_FIFO" &
+date '+S%d/%b  %I:%M %p' > "$PANEL_FIFO" &
+bspc subscribe report > "$PANEL_FIFO" &
+
+# Volume
+while true; do
+  vol=$(amixer get Master | sed -n 's/^.*\[\([0-9]\+\)%.*$/\1/p'| uniq)
+  perc="%"
+
+  echo "V$vol$perc"
+  sleep 1
+done > "$PANEL_FIFO" &
+
+# Battery
+while true; do
+  BATPERC=$(acpi --battery | cut -d, -f2)
+
+  PLUGGED=$(acpi -a | tail -c 8 | grep 'on-line')
+
+  echo -e "B$BATPERC"
+  sleep 1
+done > "$PANEL_FIFO" &
+
+# Memory
+while true; do
+  read t f <<< `grep -E 'Mem(Total|Free)' /proc/meminfo |awk '{print $2}'`
+  mem="scale=2; 100 - $f / $t * 100" | cut -d. -f1
+  echo -e "M$mem"
+  sleep 1
+done > "$PANEL_FIFO" &
+
+# CPU
+while true; do
+  LINE=`ps -eo pcpu |grep -vE '^\s*(0.0|%CPU)' |sed -n '1h;$!H;$g;s/\n/ +/gp'`
+  cpu=`echo $LINE | bc`
+  echo "C$cpu"
+  sleep 1
+done > "$PANEL_FIFO" &
+
+. "$HOME/.config/bar/panel_colors"
+
+$HOME/.config/bar/panel_bar < "$PANEL_FIFO" | lemonbar -b -a 32 -u 2 -n "$PANEL_WM_NAME" -g x$PANEL_HEIGHT -f "$PANEL_FONT" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" | sh &
+
+# wid=$(xdo id -m -a "$PANEL_WM_NAME")
+# xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" "$wid"
+wait
+

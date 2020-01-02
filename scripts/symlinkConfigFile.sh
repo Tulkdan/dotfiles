@@ -42,3 +42,8 @@ linkConfigFile bspwm/scripts/wallpaper.sh
 
 mkdir -p "$HOME/.config/sxhkd"
 linkConfigFile sxhkd/sxhkdrc
+
+mkdir -p "$HOME/.config/bar"
+linkConfigFile bar/panel
+linkConfigFile bar/panel_bar
+linkConfigFile bar/panel_colors
