@@ -72,9 +72,7 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 source $ZSH/oh-my-zsh.sh
-source /etc/environment
-source ~/.zprofile
-source ~/.profile
+source $HOME/.profile
 
 # User configuration
 
@@ -94,7 +92,7 @@ source ~/.profile
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -102,45 +100,17 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vimrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias postman="cd ~/ && ./Postman/Postman"
+alias zshconfig="vim $HOME/.zshrc"
+alias vimconfig="vim $HOME/.vimrc"
 alias pen="udisksctl mount -b /dev/sdb1"
 alias unpen="udisksctl unmount -b /dev/sdb1"
-alias atualizar="sudo apt-get update && sudo apt-get upgrade"
-alias monitor="~/./.config/bspwm/scripts/monitor_screens.sh"
-alias ultralist="$HOME/ultralist"
-
-#function powerline_precmd() {
-#    PS1="$(powerline-shell --shell zsh $?)"
-#}
-#
-#function install_powerline_precmd() {
-#  for s in "${precmd_functions[@]}"; do
-#    if [ "$s" = "powerline_precmd" ]; then
-#      return
-#    fi
-#  done
-#  precmd_functions+=(powerline_precmd)
-#}
-#
-#if [ "$TERM" != "linux" ]; then
-#    install_powerline_precmd
-#fi
-
-# added by Anaconda3 installer
-# export PATH="/home/tulkdan/anaconda3/bin:$PATH"
+alias monitor="bash $XDG_CONFIG_HOME/bspwm/scripts/monitor_screens.sh"
 
 # Base16 Shell.
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-## Added for Nodejs
-export NODE_ENV='development'
-
-export GOPATH=$HOME/go
-
 fpath=(~/.zsh/completion $fpath)
+fpath+=("$HOME/.zsh/pure")
 autoload -Uz compinit && compinit -i
 export PATH=~/.local/bin:$PATH
 
@@ -150,6 +120,7 @@ export NVM_DIR="/home/pedro/.nvm"
 autoload -U promptinit; promptinit
 prompt pure
 
-# export VIRTUAL_ENV_DISABLE_PROMPT=1
-export SHORTEN_CWD=0
-export PATH="$HOME/.rbenv/bin:$PATH"
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
+
