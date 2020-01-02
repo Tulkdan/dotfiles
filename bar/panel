@@ -6,8 +6,13 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 mkfifo "$PANEL_FIFO"
 
 xtitle -sf 'T%s\n' > "$PANEL_FIFO" &
-date '+S%d/%b  %I:%M %p' > "$PANEL_FIFO" &
 bspc subscribe report > "$PANEL_FIFO" &
+
+# Date
+while true; do
+  date '+S%d/%b  %I:%M %p'
+  sleep 60
+done > "$PANEL_FIFO" &
 
 # Volume
 while true; do
