@@ -31,6 +31,7 @@ linkDotfile .gitmessage
 linkDotfile .vimrc
 linkDotfile .Xresources
 linkDotfile .zshrc
+mkdir -p "$HOME/.vim"
 linkDotfile .vim/.skeleton.html
 linkDotfile .vim/.skeleton.tex
 linkDotfile .vim/.skeleton.py

@@ -25,6 +25,7 @@ function linkDotfile {
   ln -s "${DIR}/${1}" $DEST
 }
 
+mkdir -p "$HOME/.config/X"
 for colorscheme in $(ls X/Xres.*); do
   linkDotfile $colorscheme
 done

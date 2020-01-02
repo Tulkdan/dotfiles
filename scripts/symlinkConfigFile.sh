@@ -26,7 +26,10 @@ function linkConfigFile {
   ln -s ${dotfilesDir}/${1} ${dest}
 }
 
+mkdir -p "$HOME/.config/bspwm"
 linkConfigFile bspwm/bspwmrc
+
+mkdir -p "$HOME/.config/bspwm/scripts"
 linkConfigFile bspwm/scripts/audio_output.sh
 linkConfigFile bspwm/scripts/dmenu_config.sh
 linkConfigFile bspwm/scripts/lock.sh
@@ -36,4 +39,6 @@ linkConfigFile bspwm/scripts/random_wallpaper.sh
 linkConfigFile bspwm/scripts/reboot.sh
 linkConfigFile bspwm/scripts/shutdown.sh
 linkConfigFile bspwm/scripts/wallpaper.sh
+
+mkdir -p "$HOME/.config/sxhkd"
 linkConfigFile sxhkd/sxhkdrc
