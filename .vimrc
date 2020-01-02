@@ -69,6 +69,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ollykel/v-vim'
 Plugin 'othree/yajs.vim'
+Plugin 'Kody-Quintana/bspwm_border_color'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -126,15 +127,6 @@ endif
 
 if !has('gui_running')
   set t_Co=256
-endif
-
-" bspwm color border
-if $DISPLAY != ""
-  autocmd FocusGained * :silent execute "!$HOME/.vim/bspwm_border_color/set " . shellescape(mode())
-  autocmd InsertEnter * :silent execute "!$HOME/.vim/bspwm_border_color/set i"
-  autocmd InsertLeave * :silent execute "!$HOME/.vim/bspwm_border_color/set n"
-  autocmd VimLeave * :silent !$HOME/.vim/bspwm_border_color/reset
-  set title titlestring=VIM "So the listener script can tell its a VIM window
 endif
 
 " FORMATTERS
