@@ -16,7 +16,7 @@ set tabstop=2                                     " tab use 2 spaces
 set expandtab                                     " use space instead of spaces
 set shiftwidth=2                                  " when using the >> or << commands, shift lines by 2 spaces
 
-colorscheme Blaaark
+colorscheme one
 
 set mouse=a                                       " add mouse suport
 syntax enable                                     " enable syntax highlighting
@@ -25,6 +25,26 @@ set cursorline                                    " highlights current line
 set showmatch                                     " show the matching part of the pair for [] {} and ()
 ino ' ''<left>                                    " set autoclose of single quote
 set directory-=.                                  " don't store swapfiles in the current directory
+
+" Resize control
+nmap <left> :vertical resize -5<CR>
+nmap <up> :resize -5<CR>
+nmap <down> :resize +5<CR>
+nmap <right> :vertical resize +5<CR>
+
+" Tabs
+map <C-t>k :tabr<CR>
+map <C-t>t :tabnew<CR>
+map <C-t>h :tabp<CR>
+map <C-t>l :tabn<CR>
+map <C-t>1 :tabn1<CR>
+map <C-t>2 :tabn2<CR>
+
+" keyboard shortcuts
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 
 " commands to compile in specific typefile
@@ -55,21 +75,11 @@ filetype plugin on
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" install Vundle bundles
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
 
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jreybert/vimagit'
-Plugin 'townk/vim-autoclose'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'w0rp/ale'
-Plugin 'itchyny/lightline.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'ollykel/v-vim'
-Plugin 'othree/yajs.vim'
-Plugin 'Kody-Quintana/bspwm_border_color'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
