@@ -1,0 +1,1 @@
+/home/tulkdan/.vim/colors/novum.vim

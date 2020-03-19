@@ -16,7 +16,7 @@ set tabstop=2                                     " tab use 2 spaces
 set expandtab                                     " use space instead of spaces
 set shiftwidth=2                                  " when using the >> or << commands, shift lines by 2 spaces
 
-colorscheme one
+colorscheme novum
 
 set mouse=a                                       " add mouse suport
 syntax enable                                     " enable syntax highlighting
@@ -126,7 +126,7 @@ let python_highlight_all = 1
 
 " lightline config
 let g:lightline = {
-  \ 'colorscheme': 'seoul256',
+  \ 'colorscheme': 'landscape',
   \}
 
 if &term =~ '256color'
