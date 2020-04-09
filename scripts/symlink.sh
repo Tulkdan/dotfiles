@@ -26,13 +26,23 @@ function linkDotfile {
   ln -s ${dotfilesDir}/${1} ${dest}
 }
 
+# Git
 linkDotfile .gitconfig
 linkDotfile .gitmessage
+
+# Vim
 linkDotfile .vimrc
-linkDotfile .Xresources
-linkDotfile .zshrc
+linkDotfile .vimrc.bundles
 mkdir -p "$HOME/.vim"
 linkDotfile .vim/.skeleton.html
 linkDotfile .vim/.skeleton.tex
 linkDotfile .vim/.skeleton.py
+
+# Xresources
+linkDotfile .Xresources
+
+# zsh bash things
+linkDotfile .zshrc
+linkDotfile .bash_aliases
+linkDotfile .bash_aws_aliases
 
