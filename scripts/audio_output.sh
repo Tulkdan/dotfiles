@@ -7,7 +7,7 @@ do
   OUTPUTS+="$line\n"
 done < <(pacmd list-cards | grep output: | awk '{ print $1, $2, $3, $4 }')
 
-CHOSEN=$(sh $HOME/.config/bspwm/scripts/dmenu_config.sh "$OUTPUTS")
+CHOSEN=$(sh $HOME/.config/scripts/dmenu_config.sh "$OUTPUTS")
 
 if [ -n "$CHOSEN" ]
 then

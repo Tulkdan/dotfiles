@@ -2,7 +2,7 @@
 
 choices="laptop\nlaptopdual\nHDMI\nonlyHDMI"
 
-chosen=$(sh $HOME/.config/bspwm/scripts/dmenu_config.sh "$choices")
+chosen=$(sh $HOME/.config/scripts/dmenu_config.sh "$choices")
 
 case "$chosen" in
         laptop) xrandr --output LVDS-1 --primary --mode 1366x768 --auto --output VGA-1 --off;;
