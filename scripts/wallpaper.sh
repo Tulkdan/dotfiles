@@ -9,7 +9,7 @@ do
 	WALLPAPERS="$entry"
 done
 
-CHOSEN=$(sh $HOME/.config/bspwm/scripts/dmenu_config.sh "$WALLPAPERS")
+CHOSEN=$(sh $HOME/.config/scripts/dmenu_config.sh "$WALLPAPERS")
 
 if [ $CHOSEN ]
 then

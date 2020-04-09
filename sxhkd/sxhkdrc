@@ -41,18 +41,6 @@ XF86AudioRaiseVolume
 XF86AudioLowerVolume
 	amixer -q sset Master 3%-
 
-# Mount pendrive
-# super + p
-# 	udisksctl mount -b /dev/sdb1
-# 
-# # Unmount pendrive
-# super + shift + p
-# 	udisksctl unmount -b /dev/sdb1
-
-# ncmpcpp
-super + n
-	st -e ncmpcpp
-
 # set wallpaper
 super + w
 	~/./.config/bspwm/scripts/wallpaper.sh
