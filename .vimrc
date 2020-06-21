@@ -16,7 +16,9 @@ set tabstop=2                                     " tab use 2 spaces
 set expandtab                                     " use space instead of spaces
 set shiftwidth=2                                  " when using the >> or << commands, shift lines by 2 spaces
 
-colorscheme novum
+set updatetime=100                                " set time for vim to trigger events updates
+
+colorscheme iceberg
 
 set mouse=a                                       " add mouse suport
 syntax enable                                     " enable syntax highlighting
@@ -124,9 +126,10 @@ call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
+  " \ 'colorscheme': 'landscape',
 " lightline config
 let g:lightline = {
-  \ 'colorscheme': 'landscape',
+  \ 'colorscheme': 'iceberg',
   \}
 
 if &term =~ '256color'
