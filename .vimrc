@@ -18,7 +18,7 @@ set shiftwidth=2                                  " when using the >> or << comm
 
 set updatetime=100                                " set time for vim to trigger events updates
 
-colorscheme iceberg
+colorscheme novum
 
 set mouse=a                                       " add mouse suport
 syntax enable                                     " enable syntax highlighting
@@ -54,8 +54,8 @@ autocmd FileType markdown,md,rmd map <F5> :! (echo 'require("rmarkdown"); render
 autocmd FileType c map <F5> :!gcc % && ./a.out <CR>
 autocmd FileType python map <F5> :!python % <CR>
 autocmd FileType cpp map <F5> :!g++ % && ./a.out <CR>
-autocmd FileType tex map <F6> :!pdflatex % && biber %:r && pdflatex % <CR>
-autocmd FileType tex map <F5> :!pdflatex % && pdflatex % <CR>
+autocmd FileType tex map <F6> :!xelatex % && biber %:r && xelatex % <CR>
+autocmd FileType tex map <F5> :!xelatex %<CR>
 
 
 
@@ -129,7 +129,7 @@ let python_highlight_all = 1
   " \ 'colorscheme': 'landscape',
 " lightline config
 let g:lightline = {
-  \ 'colorscheme': 'iceberg',
+  \ 'colorscheme': 'deus',
   \}
 
 if &term =~ '256color'
