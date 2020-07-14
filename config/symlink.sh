@@ -6,7 +6,7 @@ function linkConfigFile {
   dest="${HOME}/.config/${1}"
   dateStr=$(date +%Y-%m-%d-%H%M)
 
-  if [ -h ~/.config/${1} ]; then
+  if [ -h ~/${1} ]; then
     # Existing symlink
     echo "Removing existing symlink: ${dest}"
     rm ${dest}
@@ -18,13 +18,17 @@ function linkConfigFile {
 
   elif [ -d "${dest}" ]; then
     # Existing dir
-    echo "Backing up existing die: ${dest}"
+    echo "Backing up existing dir: ${dest}"
     mv ${dest}{,.${dateStr}}
   fi
 
   echo "Creating new symlink: ${dest}"
   ln -s ${dotfilesDir}/${1} ${dest}
 }
+
+mkdir -p "$HOME/.config/git"
+linkConfigFile git/config
+linkConfigFile git/message
 
 mkdir -p "$HOME/.config/bspwm"
 linkConfigFile bspwm/bspwmrc
@@ -36,3 +40,16 @@ mkdir -p "$HOME/.config/bar"
 linkConfigFile bar/panel
 linkConfigFile bar/panel_bar
 linkConfigFile bar/panel_colors
+
+mkdir -p "$HOME/.config/alacritty"
+linkConfigFile alacritty/alacritty.yml
+
+mkdir -p "$HOME/.config/scripts"
+for script in $(ls scripts/*.sh); do
+  linkConfigFile $script
+done
+
+mkdir -p "$HOME/.config/X"
+for colorscheme in $(ls X/Xres.*); do
+  linkConfigFile $colorscheme
+done

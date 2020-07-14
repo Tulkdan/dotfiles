@@ -24,13 +24,17 @@ plugins=(
   git
 )
 
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.profile
 
 # User configuration
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export CARGO_HOME="$XDG_CONFIG_HOME"/cargo
+export RUSTUP_HOME="$XDG_CONFIG_HOME"/rustup
+export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -55,17 +59,21 @@ fi
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 fpath=(~/.zsh/completion $fpath)
-fpath+=("$HOME/.zsh/pure")
-autoload -Uz compinit && compinit -i
+# fpath+=("$HOME/.zsh/pure")
+# autoload -Uz compinit && compinit -i
 export PATH=~/.local/bin:$PATH
+export PATH="$HOME/.config/cargo/bin:$PATH"
 
-export NVM_DIR="/home/pedro/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-autoload -U promptinit; promptinit
-prompt pure
+# autoload -U promptinit; promptinit
+# prompt pure
 
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx
 fi
 
+autoload -Uz add-zsh-hook
+
+_pista_prompt() {
+  PROMPT="$(pista -z)"
+}
+add-zsh-hook precmd _pista_prompt

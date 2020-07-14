@@ -18,7 +18,7 @@ function linkDotfile {
 
   elif [ -d "${dest}" ]; then
     # Existing dir
-    echo "Backing up existing die: ${dest}"
+    echo "Backing up existing dir: ${dest}"
     mv ${dest}{,.${dateStr}}
   fi
 
@@ -26,23 +26,10 @@ function linkDotfile {
   ln -s ${dotfilesDir}/${1} ${dest}
 }
 
-# Git
-linkDotfile .gitconfig
-linkDotfile .gitmessage
-
-# Vim
-linkDotfile .vimrc
-linkDotfile .vimrc.bundles
-mkdir -p "$HOME/.vim"
-linkDotfile .vim/.skeleton.html
-linkDotfile .vim/.skeleton.tex
-linkDotfile .vim/.skeleton.py
-
-# Xresources
-linkDotfile .Xresources
-
-# zsh bash things
-linkDotfile .zshrc
 linkDotfile .bash_aliases
 linkDotfile .bash_aws_aliases
-
+linkDotfile .vimrc
+linkDotfile .vimrc.bundles
+linkDotfile .xinitrc
+linkDotfile .Xresources
+linkDotfile .zshrc

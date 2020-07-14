@@ -13,6 +13,6 @@ CHOSEN=$(sh $HOME/.config/scripts/dmenu_config.sh "$WALLPAPERS")
 
 if [ $CHOSEN ]
 then
-  feh --bg-fill "$HOME/Pictures/Wallpapers/$CHOSEN"
+  feh --no-fehbg --bg-fill "$HOME/Pictures/Wallpapers/$CHOSEN"
   wal -s -t -n -e -i "${HOME}/Pictures/Wallpapers/${CHOSEN}"
 fi

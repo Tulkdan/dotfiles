@@ -1,6 +1,7 @@
 [user]
   name = Pedro Correa
   email = pedro8correa@gmail.com
+	signingkey = 861F7FE52814C384
 [color]
   added = auto
   changed = auto
@@ -18,4 +19,4 @@
 [push]
   default = current
 [commit]
-  template = ~/.gitmessage
+  template = ~/.config/git/message
