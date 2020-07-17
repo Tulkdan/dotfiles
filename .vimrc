@@ -15,10 +15,11 @@ set listchars=tab:\|.,trail:.,extends:»,precedes:«,nbsp:×
 set tabstop=2                                     " tab use 2 spaces
 set expandtab                                     " use space instead of spaces
 set shiftwidth=2                                  " when using the >> or << commands, shift lines by 2 spaces
+set guicursor=
 
 set updatetime=100                                " set time for vim to trigger events updates
 
-colorscheme novum
+colorscheme nord
 
 set mouse=a                                       " add mouse suport
 syntax enable                                     " enable syntax highlighting
@@ -126,7 +127,7 @@ call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
-  " \ 'colorscheme': 'landscape',
+  " \ 'colorscheme': 'deus',
 " lightline config
 let g:lightline = {
   \ 'colorscheme': 'deus',
