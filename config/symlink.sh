@@ -30,6 +30,9 @@ mkdir -p "$HOME/.config/git"
 linkConfigFile git/config
 linkConfigFile git/message
 
+mkdir -p "$HOME/.config/spotifyd"
+linkConfigFile spotifyd/spotifyd.conf
+
 mkdir -p "$HOME/.config/bspwm"
 linkConfigFile bspwm/bspwmrc
 

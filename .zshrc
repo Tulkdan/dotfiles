@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME=""
+ZSH_THEME="half-life"
 
 # export TERM="screen-256color"
 
@@ -24,7 +24,7 @@ plugins=(
   git
 )
 
-export VISUAL=nvim
+export VISUAL=$(which nvim)
 export EDITOR="$VISUAL"
 
 source $ZSH/oh-my-zsh.sh
@@ -73,7 +73,4 @@ fi
 
 autoload -Uz add-zsh-hook
 
-_pista_prompt() {
-  PROMPT="$(pista -z)"
-}
-add-zsh-hook precmd _pista_prompt
+if [ -e /home/tulkdan/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tulkdan/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

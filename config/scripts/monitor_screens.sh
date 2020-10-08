@@ -1,15 +1,18 @@
 #!/bin/sh
+intern=LVDS1
+extern=HDMI1
 
-choices="laptop\nlaptopdual\nHDMI\nonlyHDMI"
+choices="laptop\ndualHDMI\nHDMI"
 
 chosen=$(sh $HOME/.config/scripts/dmenu_config.sh "$choices")
 
 case "$chosen" in
-        laptop) xrandr --output LVDS-1 --primary --mode 1366x768 --auto --output VGA-1 --off;;
-        laptopdual) xrandr --output LVDS-1 --primary --mode 1366x768 --output VGA-1 --auto --right-of LVDS-1;;
-        HDMI) xrandr --output LVDS-1 --primary --mode 1366x768 --output HDMI-1 --auto --right-of LVDS-1 ;;
-        onlyHDMI) xrandr --output LVDS-1 --off --output HDMI-1 --auto;;
+        laptop) xrandr --output "$intern" --primary --mode 1366x768 --auto --output "$extern" --off;;
+        dualHDMI) xrandr --output "$intern" --primary --mode 1366x768 --output "$extern" --auto --right-of "$intern" ;;
+        HDMI) xrandr --output "$intern" --off --output "$extern" --primary --auto;;
 esac
 
-bash $HOME/.config/bspwm/scripts/polybar-5.sh
+pkill -USR1 -x limepanel
+limepanel &
+bash $XDG_CONFIG_HOME/bspwm/bspwmrc
 

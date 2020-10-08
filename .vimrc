@@ -5,8 +5,6 @@ set laststatus=2                                  " always display the status li
 set showtabline=2
 set splitbelow                                    " new splits will be at the bottom or to the right side of the screen
 set splitright
-set t_Co=256                                      " enable 256 colors
-set background=dark                               " set background
 set wildchar=<Tab> wildmenu wildmode=full         " set TAB the be the autocomplete
 set wildignore+=**/node_modules/**                " when using :find, should ignore files in node_modules
 set path+=**                                      " set current path to be searchable
@@ -19,7 +17,9 @@ set guicursor=
 
 set updatetime=100                                " set time for vim to trigger events updates
 
-colorscheme nord
+set t_Co=256                                      " enable 256 colors
+set background=dark                               " set background
+colorscheme nighted
 
 set mouse=a                                       " add mouse suport
 syntax enable                                     " enable syntax highlighting
