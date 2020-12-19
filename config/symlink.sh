@@ -33,16 +33,8 @@ linkConfigFile git/message
 mkdir -p "$HOME/.config/spotifyd"
 linkConfigFile spotifyd/spotifyd.conf
 
-mkdir -p "$HOME/.config/bspwm"
-linkConfigFile bspwm/bspwmrc
-
 mkdir -p "$HOME/.config/sxhkd"
 linkConfigFile sxhkd/sxhkdrc
-
-mkdir -p "$HOME/.config/bar"
-linkConfigFile bar/panel
-linkConfigFile bar/panel_bar
-linkConfigFile bar/panel_colors
 
 mkdir -p "$HOME/.config/alacritty"
 linkConfigFile alacritty/alacritty.yml

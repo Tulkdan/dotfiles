@@ -31,6 +31,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.profile
 
 # User configuration
+export XDG_CONFIG_HOME=$HOME/.config
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export CARGO_HOME="$XDG_CONFIG_HOME"/cargo
 export RUSTUP_HOME="$XDG_CONFIG_HOME"/rustup
@@ -72,5 +73,3 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
 fi
 
 autoload -Uz add-zsh-hook
-
-if [ -e /home/tulkdan/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tulkdan/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

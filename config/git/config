@@ -1,7 +1,7 @@
 [user]
   name = Pedro Correa
   email = pedro8correa@gmail.com
-	signingkey = 861F7FE52814C384
+	signingkey = 37BB2EECCF8B2BC2
 [color]
   added = auto
   changed = auto
@@ -20,3 +20,4 @@
   default = current
 [commit]
   template = ~/.config/git/message
+	gpgSign = true
