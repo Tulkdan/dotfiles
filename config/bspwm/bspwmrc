@@ -1,0 +1,45 @@
+#! /bin/sh
+
+if (xrandr --query | grep 'VGA-1 connected'); then
+  xrandr --output LVDS-1 --primary --mode 1366x768 --output VGA-1 --auto --right-of LVDS-1
+
+  bspc monitor LVDS-1 -d I II III IV
+  bspc monitor VGA-1 -d V VI VII VIII IX X
+elif (xrandr --query | grep 'HDMI-1 connected'); then
+  xrandr --output LVDS-1 --off --output HDMI-1 --mode 2560x1080
+
+  bspc monitor HDMI-1 -d I II III IV V VI VII VIII IX X
+
+else
+  bspc monitor -d I II III IV V VI VII VIII IX X
+fi
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^1'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+bspc rule -a google-chrome desktop='^1'
+bspc rule -a code desktop='^3'
+bspc rule -a subl desktop='^3'
+bspc rule -a discord desktop='^4'
+
+xsetroot -cursor_name left_ptr
+
+# Get a random wallpaper
+RANDOM_WALLPAPER=`ls $HOME/Pictures/Wallpapers/* | shuf -n 1`
+
+# Set background img with random wallpaper
+feh --bg-fill "${RANDOM_WALLPAPER}"
+# Get colors from that wallpaper with wal
+wal -s -t -n -e -i "${RANDOM_WALLPAPER}"
+
+bash $HOME/.config/bar/panel
+

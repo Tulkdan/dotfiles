@@ -5,8 +5,6 @@ set laststatus=2                                  " always display the status li
 set showtabline=2
 set splitbelow                                    " new splits will be at the bottom or to the right side of the screen
 set splitright
-set t_Co=256                                      " enable 256 colors
-set background=dark                               " set background
 set wildchar=<Tab> wildmenu wildmode=full         " set TAB the be the autocomplete
 set wildignore+=**/node_modules/**                " when using :find, should ignore files in node_modules
 set path+=**                                      " set current path to be searchable
@@ -15,7 +13,12 @@ set listchars=tab:\|.,trail:.,extends:»,precedes:«,nbsp:×
 set tabstop=2                                     " tab use 2 spaces
 set expandtab                                     " use space instead of spaces
 set shiftwidth=2                                  " when using the >> or << commands, shift lines by 2 spaces
+set guicursor=
 
+set updatetime=100                                " set time for vim to trigger events updates
+
+set t_Co=256                                      " enable 256 colors
+set background=dark                               " set background
 colorscheme Blaaark                                  " set colorscheme
 
 set mouse=a                                       " add mouse suport
@@ -27,13 +30,13 @@ set directory-=.                                  " don't store swapfiles in the
 
 ino ' ''<left>                                    " set autoclose of single quote
 
-" Resize contorl
+" Resize control
 nmap <left> :vertical resize -5<CR>
 nmap <up> :resize -5<CR>
 nmap <down> :resize +5<CR>
 nmap <right> :vertical resize +5<CR>
 
-"Tabs
+" Tabs
 map <C-t>k :tabr<CR>
 map <C-t>t :tabnew<CR>
 map <C-t>h :tabp<CR>
@@ -41,14 +44,19 @@ map <C-t>l :tabn<CR>
 map <C-t>1 :tabn1<CR>
 map <C-t>2 :tabn2<CR>
 
+" keyboard shortcuts
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 " commands to compile in specific typefile
 autocmd FileType markdown,md,rmd map <F5> :! (echo 'require("rmarkdown"); render("'%'");'<bar>  R --vanilla) <CR>
 autocmd FileType c map <F5> :!gcc % && ./a.out <CR>
 autocmd FileType python map <F5> :!python % <CR>
 autocmd FileType cpp map <F5> :!g++ % && ./a.out <CR>
-autocmd FileType tex map <F6> :!pdflatex % && biber %:r && pdflatex % <CR>
-autocmd FileType tex map <F5> :!pdflatex % && pdflatex % <CR>
+autocmd FileType tex map <F6> :!xelatex % && biber %:r && xelatex % <CR>
+autocmd FileType tex map <F5> :!xelatex %<CR>
 
 
 
@@ -70,19 +78,11 @@ filetype plugin on
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" install Vundle bundles
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
 
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jreybert/vimagit'
-Plugin 'townk/vim-autoclose'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'w0rp/ale'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'itchyny/lightline.vim'
-Plugin 'ollykel/v-vim'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -122,16 +122,16 @@ call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('jsx', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('typescript', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
-" enable javascript libraries highlights
-let g:user_javascript_libs = 'react'
-
+  " \ 'colorscheme': 'deus',
+" lightline config
 let g:lightline = {
-  \ 'colorscheme': 'seoul256',
+  \ 'colorscheme': 'deus',
   \}
 
 if &term =~ '256color'
@@ -143,5 +143,16 @@ endif
 if !has('gui_running')
   set t_Co=256
 endif
+
+" FORMATTERS
+au FileType javascript setlocal formatprg=prettier
+au FileType javascript.jsx setlocal formatprg=prettier
+au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+au FileType scss setlocal formatprg=prettier\ --parser\ css
+au FileType css setlocal formatprg=prettier\ --parser\ css
+
+let g:ale_linters = {
+\   'javascript': ['eslint']
+\}
 
 set noshowmode                                    " remove insert info

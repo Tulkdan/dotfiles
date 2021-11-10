@@ -1,0 +1,23 @@
+[user]
+  name = Pedro Correa
+  email = pedro8correa@gmail.com
+	signingkey = 37BB2EECCF8B2BC2
+[color]
+  added = auto
+  changed = auto
+  untracked = auto
+[color "status"]
+  added = green
+  changed = blue
+  untracked = red
+[color "diff"]
+  added = green
+  changed = blue
+  untracked = red
+[core]
+  editor = vim
+[push]
+  default = current
+[commit]
+  template = ~/.config/git/message
+	gpgSign = true

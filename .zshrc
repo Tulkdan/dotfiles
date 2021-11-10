@@ -2,63 +2,19 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/pedro/.oh-my-zsh
+  export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME=""
-
-#POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs) 
-#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator virtualenv)
+ZSH_THEME="half-life"
 
 # export TERM="screen-256color"
-
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -68,31 +24,23 @@ plugins=(
   git
 )
 
-export VISUAL=vim
+export VISUAL=$(which nvim)
 export EDITOR="$VISUAL"
 
 source $ZSH/oh-my-zsh.sh
-source /etc/environment
+source $HOME/.profile
 
 # User configuration
+export XDG_CONFIG_HOME=$HOME/.config
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export CARGO_HOME="$XDG_CONFIG_HOME"/cargo
+export RUSTUP_HOME="$XDG_CONFIG_HOME"/rustup
+export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -100,54 +48,28 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vimrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias postman="cd ~/ && ./Postman/Postman"
-alias pen="udisksctl mount -b /dev/sdb1"
-alias unpen="udisksctl unmount -b /dev/sdb1"
-alias atualizar="sudo apt-get update && sudo apt-get upgrade"
-alias monitor="~/./.config/bspwm/scripts/monitor_screens.sh"
-alias ultralist="$HOME/ultralist"
+if [ -f ~/.bash_aliases ]; then
+  source ~/.bash_aliases
+fi
 
-#function powerline_precmd() {
-#    PS1="$(powerline-shell --shell zsh $?)"
-#}
-#
-#function install_powerline_precmd() {
-#  for s in "${precmd_functions[@]}"; do
-#    if [ "$s" = "powerline_precmd" ]; then
-#      return
-#    fi
-#  done
-#  precmd_functions+=(powerline_precmd)
-#}
-#
-#if [ "$TERM" != "linux" ]; then
-#    install_powerline_precmd
-#fi
-
-# added by Anaconda3 installer
-# export PATH="/home/tulkdan/anaconda3/bin:$PATH"
+if [ -f ~/.bash_aws_aliases ]; then
+  source ~/.bash_aws_aliases
+fi
 
 # Base16 Shell.
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-## Added for Nodejs
-export NODE_ENV='development'
-
-export GOPATH=$HOME/go
-
 fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
+# fpath+=("$HOME/.zsh/pure")
+# autoload -Uz compinit && compinit -i
 export PATH=~/.local/bin:$PATH
+export PATH="$HOME/.config/cargo/bin:$PATH"
 
-export NVM_DIR="/home/pedro/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# autoload -U promptinit; promptinit
+# prompt pure
 
-autoload -U promptinit; promptinit
-prompt pure
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
 
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-export SHORTEN_CWD=0
-export PATH="$HOME/.rbenv/bin:$PATH"
+autoload -Uz add-zsh-hook

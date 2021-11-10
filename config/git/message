@@ -1,0 +1,11 @@
+
+
+# [feat|fix|docs|style|perf|test|chore|refactor] [issue #id] [summary]
+# feat: Added a new feature
+# fix: Fixed a bug
+# docs: Documentation changes
+# style: Code style change
+# perf: Update code perfomances
+# test: Added test to existing features
+# chore: Update something without impact the user
+# refactor: Refactor code without changes
