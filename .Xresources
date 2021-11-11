@@ -1,9 +1,7 @@
 ! Special
-! ------------------------------------------------------------------------------
 *alpha: 1
 
 !  URxvt
-! ------------------------------------------------------------------------------
 
 URxvt.cursorBlink : 0
 URxvt.font       :xft:Hack:size=10:style=Medium
@@ -25,4 +23,4 @@ URxvt.perl-ext-common : default,matcher
 URxvt.url-launcher    : firefox
 URxvt.matcher.button  : 1
 
-#include ".config/X/Xres.lovelace"
+#include ".config/x/X.lovelace"

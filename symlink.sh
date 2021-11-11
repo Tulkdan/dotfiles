@@ -28,8 +28,13 @@ function linkDotfile {
 
 linkDotfile .bash_aliases
 linkDotfile .bash_aws_aliases
+mkdir -p .config/git
+linkDotfile config/git/config
+linkDotfile config/git/message
+mkdir -p .config/vim
+linkDotfile config/vim/aliases.vim
+linkDotfile config/vim/bundles.vim
 linkDotfile .vimrc
-linkDotfile .vimrc.bundles
 linkDotfile .xinitrc
 linkDotfile .Xresources
 linkDotfile .zshrc

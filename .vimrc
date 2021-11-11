@@ -11,15 +11,15 @@ set path+=**                                      " set current path to be searc
 set list                                          " show trailing space
 set listchars=tab:\|.,trail:.,extends:»,precedes:«,nbsp:×
 set tabstop=2                                     " tab use 2 spaces
-set expandtab                                     " use space instead of spaces
+set expandtab                                     " use space instead of tabs
 set shiftwidth=2                                  " when using the >> or << commands, shift lines by 2 spaces
-set guicursor=
+set guicursor=                                    " makes vim to not change cursor shape
 
 set updatetime=100                                " set time for vim to trigger events updates
 
 set t_Co=256                                      " enable 256 colors
 set background=dark                               " set background
-colorscheme Blaaark                                  " set colorscheme
+colorscheme Blaaark                               " set colorscheme
 
 set mouse=a                                       " add mouse suport
 syntax enable                                     " enable syntax highlighting
@@ -28,27 +28,19 @@ set cursorline                                    " highlights current line
 set showmatch                                     " show the matching part of the pair for [] {} and ()
 set directory-=.                                  " don't store swapfiles in the current directory
 
+set foldmethod=indent
+set nofoldenable
+set foldlevel=5
+
+set updatetime=100                                " controls the delay that vim can write swap files
+
 ino ' ''<left>                                    " set autoclose of single quote
 
-" Resize control
-nmap <left> :vertical resize -5<CR>
-nmap <up> :resize -5<CR>
-nmap <down> :resize +5<CR>
-nmap <right> :vertical resize +5<CR>
 
-" Tabs
-map <C-t>k :tabr<CR>
-map <C-t>t :tabnew<CR>
-map <C-t>h :tabp<CR>
-map <C-t>l :tabn<CR>
-map <C-t>1 :tabn1<CR>
-map <C-t>2 :tabn2<CR>
+source ~/.config/vim/aliases.vim
 
-" keyboard shortcuts
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
+" go to Normal mode on integrated terminal
+tnoremap <Esc> <C-\><C-n>
 
 " commands to compile in specific typefile
 autocmd FileType markdown,md,rmd map <F5> :! (echo 'require("rmarkdown"); render("'%'");'<bar>  R --vanilla) <CR>
@@ -69,7 +61,6 @@ nnoremap ,tex :-1read $HOME/.vim/.skeleton.tex<CR>
 
 set nocompatible              " be iMproved, required
 filetype plugin on
-" filetype off                  " required
 
 
 " Vundle configuration and plugins
@@ -79,8 +70,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " install Vundle bundles
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("~/.config/vim/bundles.vim"))
+  source ~/.config/vim/bundles.vim
 endif
 
 call vundle#end()            " required
@@ -128,8 +119,6 @@ call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
-  " \ 'colorscheme': 'deus',
-" lightline config
 let g:lightline = {
   \ 'colorscheme': 'deus',
   \}
@@ -140,19 +129,8 @@ if &term =~ '256color'
 	set t_ut=
 endif
 
-if !has('gui_running')
-  set t_Co=256
-endif
-
-" FORMATTERS
-au FileType javascript setlocal formatprg=prettier
-au FileType javascript.jsx setlocal formatprg=prettier
-au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
-au FileType scss setlocal formatprg=prettier\ --parser\ css
-au FileType css setlocal formatprg=prettier\ --parser\ css
-
-let g:ale_linters = {
-\   'javascript': ['eslint']
-\}
-
 set noshowmode                                    " remove insert info
+
+" if has('nvim') || has('termguicolors')
+"   set termguicolors
+" endif

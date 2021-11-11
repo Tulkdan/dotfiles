@@ -1,0 +1,21 @@
+import { shallowMount } from '~/base_test';
+
+describe('', () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallowMount();
+  });
+
+  afterEach(() => {
+    wrapper.destroy();
+  });
+
+  it('[RENDER] Check vue instance', () => {
+    expect(wrapper.isVueInstance()).toBeTruthy();
+  });
+
+  it('[SNAPSHOT] Check structure', () => {
+    expect(wrapper.element).toBeTruthy();
+  });
+});
