@@ -1,21 +1,17 @@
-import { shallowMount } from '~/base_test';
+import { mount } from '@vue/test-utils';
+
+import _ from ''
 
 describe('', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = shallowMount();
-  });
-
-  afterEach(() => {
-    wrapper.destroy();
-  });
-
   it('[RENDER] Check vue instance', () => {
+    const wrapper = mount()
+
     expect(wrapper.isVueInstance()).toBeTruthy();
   });
 
   it('[SNAPSHOT] Check structure', () => {
-    expect(wrapper.element).toBeTruthy();
+    const wrapper = mount()
+
+    expect(wrapper.html()).toMatchSnapshot();
   });
 });
