@@ -48,3 +48,8 @@ mkdir -p "$HOME/.config/X"
 for colorscheme in $(ls X/Xres.*); do
   linkConfigFile $colorscheme
 done
+
+mkdir -p "$HOME/.config/vim"
+for colorscheme in $(ls vim/*.vim); do
+  linkConfigFile $colorscheme
+done

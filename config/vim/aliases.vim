@@ -22,3 +22,6 @@ noremap <C-l> <C-w>l
 nnoremap <C-f>f <cmd>Telescope find_files<cr>
 nnoremap <C-f>b <cmd>Telescope buffers<cr>
 nnoremap <C-f>h <cmd>Telescope help_tags<cr>
+
+" go to Normal mode on integrated terminal
+tnoremap <Esc> <C-\><C-n>
