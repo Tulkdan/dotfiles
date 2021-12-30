@@ -34,6 +34,8 @@ set foldlevel=5
 
 set updatetime=100                                " controls the delay that vim can write swap files
 
+set autochdir                                     " set the working directory to be the same as the file that is been edited
+
 ino ' ''<left>                                    " set autoclose of single quote
 
 
@@ -88,6 +90,6 @@ endif
 
 set noshowmode                                    " remove insert info
 
-" if has('nvim') || has('termguicolors')
-"   set termguicolors
-" endif
+if has('nvim') || has('termguicolors')
+  set termguicolors
+endif
