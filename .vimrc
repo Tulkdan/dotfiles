@@ -34,7 +34,9 @@ set foldlevel=5
 
 set updatetime=100                                " controls the delay that vim can write swap files
 
-set autochdir                                     " set the working directory to be the same as the file that is been edited
+let mapleader = ","
+
+" set autochdir                                     " set the working directory to be the same as the file that is been edited
 
 ino ' ''<left>                                    " set autoclose of single quote
 
@@ -50,6 +52,10 @@ endif
 
 if filereadable(expand("~/.config/vim/skeletons.vim"))
   source ~/.config/vim/skeletons.vim
+endif
+
+if filereadable(expand("~/.config/vim/coc.vim"))
+  source ~/.config/vim/coc.vim
 endif
 
 set nocompatible              " be iMproved, required
@@ -73,6 +79,14 @@ filetype plugin indent on    " required
 
 if filereadable(expand("~/.config/vim/nerdtree.vim"))
   source ~/.config/vim/nerdtree.vim
+endif
+
+if filereadable(expand("~/.config/vim/ale.vim"))
+  source ~/.config/vim/ale.vim
+endif
+
+if filereadable(expand("~/.config/vim/test.vim"))
+  source ~/.config/vim/test.vim
 endif
 
 " enable all Python syntax highlighting features

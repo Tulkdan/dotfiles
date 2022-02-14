@@ -23,4 +23,6 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'nvim-lua/plenary.nvim'
 Plugin 'nvim-telescope/telescope.nvim'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plugin 'vim-test/vim-test'
 

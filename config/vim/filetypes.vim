@@ -14,3 +14,5 @@ autocmd FileType tex map <F5> :!xelatex %<CR>
 
 " JS
 autocmd FileType javascript map <F6> :!npm run test %  -- --coverage=false<CR>
+autocmd FileType javascript compiler eslint
+autocmd FileType javascript setlocal makeprg=npm\ run\ lint\ --\ --format\ compact
