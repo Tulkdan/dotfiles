@@ -141,8 +141,6 @@
        :init
        (ivy-rich-mode 1))
 
-     (global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
-
      (use-package doom-modeline
        :ensure t
        :init (doom-modeline-mode 1)
