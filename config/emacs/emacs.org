@@ -158,9 +158,6 @@
 	      ("C-x C-f" . counsel-find-file)
 	      :map minibuffer-local-map
 	      ("C-r" . 'counsel-minibuffer-history)))
-
-     (use-package counsel-projectile
-       :config (counsel-projectile-mode))
    #+end_src
 
 ** Evil and General
@@ -226,6 +223,10 @@
        ("C-c p" . projectile-command-map)
        :init
        (setq projectile-switch-project-action #'projectile-dired))
+
+     (use-package counsel-projectile
+       :after projectile
+       :config (counsel-projectile-mode))
    #+end_src
 
 ** LSP
