@@ -169,11 +169,14 @@
 
    #+begin_src emacs-lisp
      (use-package general
+       :after evil
        :config
-       (general-create-definer leader-keys
-	 :keymaps '(normal insert visual emacs)
-	 :prefix "SPC"
-	 :globa-prefix "C-SPC"))
+       (general-create-definer tulkdan/leader-keys
+         :states '(normal insert visual emacs)
+         :prefix "SPC"
+         :global-prefix "C-SPC")
+       (tulkdan/leader-keys
+        "g" 'magit-status))
 
      (use-package evil
        :init
@@ -191,8 +194,9 @@
        (evil-set-initial-state 'dashboard-mode 'normal))
 
      (use-package evil-collection
-       :custom (evil-collection-setup-minibuffer t)
-       :init (evil-collection-init))
+       :after evil
+       :config
+       (evil-collection-init))
    #+end_src
 
 * Development
