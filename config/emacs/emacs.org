@@ -62,8 +62,21 @@
 ** Font Configuration
 
    #+begin_src emacs-lisp
-     (set-face-attribute 'default nil :font "Hasklig" :height 100)
+     (set-face-attribute 'default nil
+                         :family "Hasklig"
+                         :height 100
+                         :weight 'normal
+                         :width 'normal)
+
+     (use-package hasklig-mode
+       :hook (haskell-mode prog-mode))
    #+end_src
+
+*** Emoji
+#+begin_src emacs-lisp
+  (use-package emojify
+    :hook (after-init . global-emojify-mode))
+#+end_src
 
 ** Themes
 
