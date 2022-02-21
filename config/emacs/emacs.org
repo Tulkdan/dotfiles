@@ -94,9 +94,10 @@
 
 ** Neotree
 #+begin_src emacs-lisp
-      (use-package neotree
-        :config
-        (setq neo-theme 'ascii))
+  (use-package neotree
+    :config
+    (setq neo-theme 'ascii)
+    (setq neo-smart-open nil))
 #+end_src
 
 * Keybinding
@@ -206,7 +207,7 @@
        :custom
        (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
    #+end_src
-
+   
 ** Projectile
 
    #+begin_src emacs-lisp
@@ -217,7 +218,9 @@
        :bind-keymap
        ("C-c p" . projectile-command-map)
        :init
-       (setq projectile-switch-project-action #'projectile-dired))
+       (setq projectile-switch-project-action #'projectile-dired)
+       (setq projectile-switch-project-action #'neotree-projectile-action))
+
 
      (use-package counsel-projectile
        :after projectile
