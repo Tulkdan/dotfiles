@@ -167,7 +167,9 @@
          :prefix "SPC"
          :global-prefix "C-SPC")
        (tulkdan/leader-keys
-        "g" 'magit-status))
+         "g" 'magit-status
+         "c" (general-simulate-key "C-c")
+         "x" (general-simulate-key "C-x")))
 
      (use-package evil
        :init
