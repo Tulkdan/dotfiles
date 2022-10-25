@@ -26,13 +26,9 @@ function linkDotfile {
   ln -s ${dotfilesDir}/${1} ${dest}
 }
 
-linkDotfile .bash_aliases
-linkDotfile .bash_aws_aliases
-mkdir -p .config/git
-linkDotfile config/git/config
-linkDotfile config/git/message
-
-linkDotfile .vimrc
-linkDotfile .xinitrc
-linkDotfile .Xresources
-linkDotfile .zshrc
+for var in "$@"
+do
+    echo "Linking file: $var"
+    linkDotfile "$var"
+    echo "$var file linked"
+done

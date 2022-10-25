@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dotfilesDir=$(pwd)
+dotfilesDir=$(pwd)/config
 
 function linkConfigFile {
   dest="${HOME}/.config/${1}"
@@ -26,30 +26,9 @@ function linkConfigFile {
   ln -s ${dotfilesDir}/${1} ${dest}
 }
 
-mkdir -p "$HOME/.config/git"
-linkConfigFile git/config
-linkConfigFile git/message
-
-mkdir -p "$HOME/.config/spotifyd"
-linkConfigFile spotifyd/spotifyd.conf
-
-mkdir -p "$HOME/.config/sxhkd"
-linkConfigFile sxhkd/sxhkdrc
-
-mkdir -p "$HOME/.config/alacritty"
-linkConfigFile alacritty/alacritty.yml
-
-mkdir -p "$HOME/.config/scripts"
-for script in $(ls scripts/*.sh); do
-  linkConfigFile $script
-done
-
-mkdir -p "$HOME/.config/X"
-for colorscheme in $(ls X/Xres.*); do
-  linkConfigFile $colorscheme
-done
-
-mkdir -p "$HOME/.config/vim"
-for colorscheme in $(ls vim/*.vim); do
-  linkConfigFile $colorscheme
+for var in "$@"
+do
+    echo "Linking file: $var"
+    linkConfigFile "$var"
+    echo "$var file linked"
 done
