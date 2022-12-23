@@ -585,17 +585,19 @@ This is a configuration to send org files into email
 
 * Elfeed
 #+begin_src emacs-lisp
-    (use-package elfeed
-        :config
-        (setq elfeed-feeds
-            '(("https://newsletter.mollywhite.net/feed.xml" dev tech)
-                ("https://stackoverflow.blog/feed/" tech)
-                ("http://news.ycombinator.com/rss" tech)
-                ("http://feeds.gawker.com/gizmodo/full" news)
-                ("http://thepracticaldev.com/feed" dev tech)
-                ("https://www.nexojornal.com.br/rss.xml" news)
-                ("https://theintercept.com/feed/?lang=pt" news)
-                ("http://piaui.folha.uol.com.br/feed/" news)
-                ("http://www.newslookup.com/rss/business/bloomberg.rss" news))))
+        (use-package elfeed
+            :config
+            (setq elfeed-feeds
+                '(("https://newsletter.mollywhite.net/feed.xml" dev tech)
+                    ("https://stackoverflow.blog/feed/" tech)
+                    ("http://news.ycombinator.com/rss" tech)
+                    ("http://feeds.gawker.com/gizmodo/full" news)
+                    ("http://thepracticaldev.com/feed" dev tech)
+                    ("https://www.nexojornal.com.br/rss.xml" news)
+                    ("https://theintercept.com/feed/?lang=pt" news)
+                    ("http://piaui.folha.uol.com.br/feed/" news)
+                    ("http://www.newslookup.com/rss/business/bloomberg.rss" news)
+                    ("https://xkcd.com/rss.xml")
+                    ("https://github.com/readme.rss" tech dev))))
 #+end_src
 
