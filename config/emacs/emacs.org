@@ -113,23 +113,23 @@ Forcing emacs to get all the env var from my machine
 ** Themes
 
    #+begin_src emacs-lisp
-     (use-package doom-themes
-       :ensure t
-       :config
-       (setq doom-themes-enable-bold t
-             doom-themes-enable-italic t)
-       (load-theme 'doom-moonlight t)
-       (doom-themes-visual-bell-config)
-       (doom-themes-org-config))
+      (use-package doom-themes
+        :ensure t
+        :config
+        (setq doom-themes-enable-bold t
+              doom-themes-enable-italic t)
+        (load-theme 'doom-snazzy t)
+        (doom-themes-visual-bell-config)
+        (doom-themes-org-config))
 
 
-     (use-package doom-modeline
-       :ensure t
-       :hook (after-init . doom-modeline-mode)
-       :custom ((doom-modeline-height 15)))
+      (use-package doom-modeline
+        :ensure t
+        :hook (after-init . doom-modeline-mode)
+        :custom ((doom-modeline-height 15)))
 
-     (use-package all-the-icons
-       :if (display-graphic-p))
+      (use-package all-the-icons
+        :if (display-graphic-p))
    #+end_src
 
 ** Neotree
