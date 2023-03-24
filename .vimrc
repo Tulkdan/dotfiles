@@ -19,7 +19,6 @@ set updatetime=100                                " set time for vim to trigger 
 
 set t_Co=256                                      " enable 256 colors
 set background=dark                               " set background
-colorscheme Blaaark                               " set colorscheme
 
 set mouse=a                                       " add mouse suport
 syntax enable                                     " enable syntax highlighting
@@ -107,3 +106,5 @@ set noshowmode                                    " remove insert info
 if has('nvim') || has('termguicolors')
   set termguicolors
 endif
+
+colorscheme catppuccin_mocha

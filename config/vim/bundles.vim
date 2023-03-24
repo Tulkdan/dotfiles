@@ -25,4 +25,5 @@ Plugin 'nvim-lua/plenary.nvim'
 Plugin 'nvim-telescope/telescope.nvim'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'vim-test/vim-test'
+Plugin 'catppuccin/vim', { 'as': 'catppuccin' }
 
