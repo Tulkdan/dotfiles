@@ -20,6 +20,10 @@ config_alacritty:
 	mkdir -p "$(HOME)/.config/alacritty"
 	$(SYMLINK_CONFIG_FILES) alacritty/alacritty.yml
 
+config_emacs:
+	mkdir -p "$(HOME)/.emacs.d"
+	$(SYMLINK_CONFIG_FILES) emacs/emacs.org emacs/init.el
+
 config_vim: $(wildcard config/vim/*.vim)
 	mkdir -p "$(HOME)/.config/vim"
 	$(SYMLINK_CONFIG_FILES) $?

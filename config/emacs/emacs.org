@@ -15,12 +15,6 @@ Activating ~hs-minor-mode~ on `prog-mode~ so I can fold functions based on inden
   (add-hook 'prog-mode-hook #'(lambda () (hs-minor-mode t)))
 #+end_src
 
-Forcing emacs to get all the env var from my machine
-#+begin_src emacs-lisp
-  (use-package exec-path-from-shell
-    :config (exec-path-from-shell-initialize))
-#+end_src
-
 * Package
 
   #+begin_src emacs-lisp
@@ -42,6 +36,15 @@ Forcing emacs to get all the env var from my machine
 
     (require 'use-package)
     (setq use-package-always-ensure t)
+#+end_src
+
+Forcing emacs to get all the env var from my machine
+#+begin_src emacs-lisp
+  (use-package exec-path-from-shell
+    :config (exec-path-from-shell-initialize))
+
+  (dolist (var '("SSH_AUTH_SOCK" "GPG_AGENT_INFO" "LANG" "NIX_PATH" "GPG_TTY"))
+    (add-to-list 'exec-path-from-shell-variables var))
 #+end_src
 
 * Basic UI Configuration
