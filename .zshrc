@@ -2,12 +2,12 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=$HOME/.oh-my-zsh
+  #export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="half-life"
+# ZSH_THEME="half-life"
 
 # export TERM="screen-256color"
 
@@ -20,15 +20,15 @@ ZSH_THEME="half-life"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
+# plugins=(
+#   git
+# )
 
 export VISUAL=$(which nvim)
 export EDITOR="$VISUAL"
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.profile
+# source $HOME/.profile
 
 # User configuration
 export XDG_CONFIG_HOME=$HOME/.config
@@ -36,11 +36,6 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export CARGO_HOME="$XDG_CONFIG_HOME"/cargo
 export RUSTUP_HOME="$XDG_CONFIG_HOME"/rustup
 export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# ssh
-export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -60,16 +55,13 @@ fi
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 fpath=(~/.zsh/completion $fpath)
-# fpath+=("$HOME/.zsh/pure")
-# autoload -Uz compinit && compinit -i
 export PATH=~/.local/bin:$PATH
 export PATH="$HOME/.config/cargo/bin:$PATH"
 
 # autoload -U promptinit; promptinit
-# prompt pure
-
-if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
-fi
 
 autoload -Uz add-zsh-hook
+
+eval "$(starship init zsh)"
+
+eval "$(direnv hook zsh)"
