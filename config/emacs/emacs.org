@@ -333,6 +333,13 @@ Forcing emacs to get all the env var from my machine
        :ensure t)
     #+end_src
 
+** Direnv
+#+begin_src emacs-lisp
+  (use-package direnv
+    :config
+    (direnv-mode))
+#+end_src
+
 ** Languages
 *** Web
 #+begin_src emacs-lisp
