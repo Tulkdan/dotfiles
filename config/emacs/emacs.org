@@ -81,17 +81,18 @@ Forcing emacs to get all the env var from my machine
 
 ** Line Numbers
 #+begin_src emacs-lisp
-  (column-number-mode)
-  (global-display-line-numbers-mode t)
-  (setq display-line-numbers-type 'relative)
+    (column-number-mode)
+    (global-display-line-numbers-mode t)
+    (setq display-line-numbers-type 'relative)
 
-  ;; Disable line numbers for some modes
-  (dolist (mode '(org-mode-hook
-                  term-mode-hook
-                  eshell-mode-hook
-                  shell-mode-hook
-                  neotree-mode-hook))
-    (add-hook mode (lambda () (display-line-numbers-mode 0))))
+    ;; Disable line numbers for some modes
+    (dolist (mode '(org-mode-hook
+                    term-mode-hook
+                    eshell-mode-hook
+                    shell-mode-hook
+                    neotree-mode-hook
+                    elfeed-mode-hook))
+      (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+end_src
 
 ** Font Configuration
@@ -99,7 +100,7 @@ Forcing emacs to get all the env var from my machine
    #+begin_src emacs-lisp
      (set-face-attribute 'default nil
                          :family "Hasklig"
-                         :height 100
+                         :height 110
                          :weight 'normal
                          :width 'normal)
 
@@ -281,12 +282,14 @@ Forcing emacs to get all the env var from my machine
        :config
        (lsp-enable-which-key-integration t)
        (lsp-javascript-inlay-hints-mode t)
+       (lsp-idle-delay 0.5)
        :hook
        (typescript-mode . lsp-deferred) ;; auto activating lsp when typescript mode is active
        (haskell-mode . lsp-deferred)
+       (kotlin-mode . lsp-deferred)
        (haskell-literate-mode . lsp-deferred))
     #+end_src
-
+    
 *** lsp-ui
 #+begin_src emacs-lisp
   (use-package lsp-ui
@@ -302,19 +305,21 @@ Forcing emacs to get all the env var from my machine
    
 ** Company (code completion)
    #+begin_src emacs-lisp
-     (use-package company
-       :after lsp-mode
-       :hook (lsp-mode . company-mode)
-       :custom
-       (company-idle-delay 0.0)
-       (company-minimum-prefix-length 1)
-       (company-show-numbers t "Numbers are helpful.")
-       (company-tooltip-limit 10 "The more the merrier.")
-       :bind
-       (:map company-active-map
-             ("<tab>" . company-complete-selection))
-       (:map lsp-mode-map
-             ("<tab>" . company-indent-or-complete-common)))
+  (use-package company
+    :after lsp-mode
+    :hook (lsp-mode . company-mode)
+    :custom
+    (company-idle-delay 0.0)
+    (company-minimum-prefix-length 1)
+    (company-show-numbers t "Numbers are helpful.")
+    (company-tooltip-limit 10 "The more the merrier.")
+    :config
+    (setq company-lsp-cache-candidates 'auto)
+    :bind
+    (:map company-active-map
+	  ("<tab>" . company-complete-selection))
+    (:map lsp-mode-map
+	  ("<tab>" . company-indent-or-complete-common)))
    #+end_src
 
 ** Flycheck (Inline Errors)
@@ -328,9 +333,11 @@ Forcing emacs to get all the env var from my machine
 
 ** Eglot
    #+begin_src emacs-lisp
-     (use-package eglot
-       :hook ((typescript-mode) . eglot-ensure)
-       :ensure t)
+  (use-package eglot
+    :hook
+    (typescript-mode . eglot-ensure)
+    (kotlin-mode . eglot-ensure)
+    :ensure t)
     #+end_src
 
 ** Direnv
@@ -359,7 +366,15 @@ Forcing emacs to get all the env var from my machine
 *** Haskell
 #+begin_src emacs-lisp
   (use-package lsp-haskell)
-  (use-package haskell-mode)
+  (use-package haskell-mode
+    :hook (haskell-mode . lsp-deferred))
+#+end_src
+
+*** Kotlin
+#+begin_src emacs-lisp
+  (use-package kotlin-mode
+    :mode "\\.kt\\'"
+    :hook (kotlin-mode . lsp-deferred))
 #+end_src
 
 ** DevOps
@@ -368,7 +383,6 @@ Enables plugin to we can use kubectl inside of emacs
 #+begin_src emacs-lisp
     (use-package kubernetes
       :config
-      (setq kubernetes-default-overview-namespace "zig-develop")
       (setq kubernetes-poll-frequency (* 60 5)) ; frequency in seconds
       (setq kubernetes-redraw-frequency (* 60 5)) ; frequency in seconds
       (setq kubernetes-pod-restart-warning-threshold 60))
@@ -400,7 +414,7 @@ Install package to be compatible with evil mode
 		       (org-level-6 . 1.1)
 		       (org-level-7 . 1.1)
 		       (org-level-8 . 1.1)))
-	 (set-face-attribute (car face) nil :font "Hasklig" :weight 'regular :height (cdr face)))
+        (set-face-attribute (car face) nil :font "Hasklig" :weight 'regular :height (cdr face)))
 
        ;; Ensure that anything that should be fixed-pitch in Org files appears that way
        (set-face-attribute 'org-block nil    :foreground nil :inherit 'fixed-pitch)
