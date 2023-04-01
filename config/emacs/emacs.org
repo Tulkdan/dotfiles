@@ -362,6 +362,12 @@ Forcing emacs to get all the env var from my machine
   (use-package haskell-mode)
 #+end_src
 
+*** Lua
+#+begin_src emacs-lisp
+    (use-package lua-mode
+      :mode "\\.lua\\'")
+#+end_src
+
 ** DevOps
 *** Kubernetes
 Enables plugin to we can use kubectl inside of emacs

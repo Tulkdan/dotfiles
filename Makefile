@@ -36,3 +36,6 @@ config_scripts: $(wildcard config/scripts/*.sh)
 	mkdir -p "$(HOME)/.config/scripts"
 	$(SYMLINK_CONFIG_FILES) $?
 
+config_wezterm:
+	mkdir -p "$(HOME)/.config/wezterm"
+	$(SYMLINK_CONFIG_FILES) wezterm/wezterm.lua

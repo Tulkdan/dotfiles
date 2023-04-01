@@ -135,6 +135,7 @@
       direnv
       gnupg
       emacs
+      wezterm
     ];
     shell = pkgs.zsh;
   };
