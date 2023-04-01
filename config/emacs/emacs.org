@@ -359,13 +359,21 @@ Forcing emacs to get all the env var from my machine
 *** Haskell
 #+begin_src emacs-lisp
   (use-package lsp-haskell)
-  (use-package haskell-mode)
+  (use-package haskell-mode
+    :hook (haskell-mode . lsp-deferred))
 #+end_src
 
 *** Lua
 #+begin_src emacs-lisp
     (use-package lua-mode
       :mode "\\.lua\\'")
+#+end_src
+
+*** Kotlin
+#+begin_src emacs-lisp
+  (use-package kotlin-mode
+    :mode "\\.kt\\'"
+    :hook (kotlin-mode . lsp-deferred))
 #+end_src
 
 ** DevOps
