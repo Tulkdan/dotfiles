@@ -9,5 +9,6 @@ end
 config.color_scheme = 'Catppuccin Mocha'
 
 config.font = wezterm.font 'Fira Code'
+config.font_size = 11
 
 return config
