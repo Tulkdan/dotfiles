@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./hyprland.nix
     ];
 
   # Bootloader.
@@ -117,6 +118,7 @@
       enableSSHSupport = true;
       enableExtraSocket = true;
     };
+
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -136,6 +138,15 @@
       gnupg
       emacs
       wezterm
+      dunst
+      wofi
+      eww-wayland
+      ripgrep
+      jq
+      socat
+      playerctl
+      imagemagick_light
+      sway-contrib.grimshot
     ];
     shell = pkgs.zsh;
   };
@@ -193,15 +204,24 @@
 
 
   # Automatic GB
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
+  nix = {
+    settings = {
+      substituters = ["https://hyprland.cachix.org"];
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
 
   # Installing fonts
   fonts.fonts = with pkgs; [
+    material-design-icons
     fira-code
     hasklig
   ];
+
 }
