@@ -383,6 +383,12 @@ Forcing emacs to get all the env var from my machine
     :hook (kotlin-mode . lsp-deferred))
 #+end_src
 
+*** Yuck (EWW)
+#+begin_src emacs-lisp
+  (use-package yuck-mode
+    :mode "\\.yuck\\'")
+#+end_src
+
 ** DevOps
 *** Kubernetes
 Enables plugin to we can use kubectl inside of emacs
