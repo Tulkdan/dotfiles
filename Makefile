@@ -39,3 +39,7 @@ config_scripts: $(wildcard config/scripts/*.sh)
 config_wezterm:
 	mkdir -p "$(HOME)/.config/wezterm"
 	$(SYMLINK_CONFIG_FILES) wezterm/wezterm.lua
+
+config_hyprland:
+	mkdir -p "$(HOME)/.config/hypr"
+	$(SYMLINK_CONFIG_FILES) hypr/hyprland.conf
