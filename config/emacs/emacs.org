@@ -389,6 +389,12 @@ Forcing emacs to get all the env var from my machine
     :mode "\\.yuck\\'")
 #+end_src
 
+*** Nix
+#+begin_src emacs-lisp
+  (use-package nix-mode
+    :mode "\\.nix\\'")
+#+end_src
+
 ** DevOps
 *** Kubernetes
 Enables plugin to we can use kubectl inside of emacs
