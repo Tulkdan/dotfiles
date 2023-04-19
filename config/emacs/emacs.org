@@ -389,6 +389,13 @@ Forcing emacs to get all the env var from my machine
     :mode "\\.yuck\\'")
 #+end_src
 
+*** Flutter
+#+begin_src emacs-lisp
+    (use-package dart-mode
+      :hook (dart-mode . lsp-deferred))
+    (use-package lsp-dart)
+#+end_src
+
 *** Nix
 #+begin_src emacs-lisp
   (use-package nix-mode
