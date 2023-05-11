@@ -16,10 +16,6 @@ config_sxhkd:
 	mkdir -p "$(HOME)/.config/sxhkd"
 	$(SYMLINK_CONFIG_FILES) sxhkd/sxhkdrc
 
-config_alacritty:
-	mkdir -p "$(HOME)/.config/alacritty"
-	$(SYMLINK_CONFIG_FILES) alacritty/alacritty.yml
-
 config_emacs:
 	mkdir -p "$(HOME)/.emacs.d"
 	$(SYMLINK_CONFIG_FILES) emacs/emacs.org emacs/init.el
