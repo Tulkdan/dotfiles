@@ -31,11 +31,3 @@ config_X_files: $(wildcard config/X/Xres.*)
 config_scripts: $(wildcard config/scripts/*.sh)
 	mkdir -p "$(HOME)/.config/scripts"
 	$(SYMLINK_CONFIG_FILES) $?
-
-config_wezterm:
-	mkdir -p "$(HOME)/.config/wezterm"
-	$(SYMLINK_CONFIG_FILES) wezterm/wezterm.lua
-
-config_hyprland:
-	mkdir -p "$(HOME)/.config/hypr"
-	$(SYMLINK_CONFIG_FILES) hypr/hyprland.conf
